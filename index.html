@@ -1,220 +1,373 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Party Tank Prague — Hummer limo experience in Prague</title>
-  <meta name="description" content="Party Tank Prague is a private Hummer limo experience for bachelor parties, weddings, birthdays, VIP arrivals and unforgettable nights in Prague." />
-  <meta name="theme-color" content="#070912" />
-  <meta property="og:title" content="Party Tank Prague" />
-  <meta property="og:description" content="Book the beast. Own the Prague night." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="img/og-preview.svg" />
-  <link rel="icon" href="img/og-preview.svg" />
-  <link rel="stylesheet" href="style.css" />
-  <script src="main.js" defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Party Tank Prague — A Routed Night</title>
+<meta name="description" content="Private Hummer H2 limousine, chauffeured through Prague and Central Bohemia. A designed route for weddings, stag nights, birthdays and the city after dark.">
+<meta property="og:title" content="Party Tank Prague — A Routed Night">
+<meta property="og:description" content="Private Hummer H2 limousine, chauffeured through Prague and Central Bohemia.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0b0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
-  <div class="liquid-bg" aria-hidden="true">
-    <span></span><span></span><span></span>
-  </div>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Party Tank Prague home">
-      <span class="brand-mark">PT</span>
-      <span class="brand-copy"><strong>Party Tank</strong><small>Prague</small></span>
-    </a>
+<div class="grain"></div>
 
-    <nav class="desktop-nav" aria-label="Main navigation">
-      <a href="#flow" data-en="The flow" data-cs="Průběh">The flow</a>
-      <a href="#scenes" data-en="Occasions" data-cs="Příležitosti">Occasions</a>
-      <a href="#inside" data-en="Inside" data-cs="Uvnitř">Inside</a>
-      <a href="#pricing" data-en="Packages" data-cs="Balíčky">Packages</a>
-      <a href="#booking" data-en="Booking" data-cs="Rezervace">Booking</a>
-    </nav>
-
-    <div class="header-actions">
-      <button class="lang-toggle" type="button" id="langToggle" aria-label="Switch language">CZ</button>
-      <a class="phone-link" href="tel:+420702201572">+420 702 201 572</a>
-      <a class="btn btn-primary btn-small" href="#booking" data-en="Check date" data-cs="Ověřit termín">Check date</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
-    </div>
-  </header>
-
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-    <a href="#flow" data-en="The flow" data-cs="Průběh">The flow</a>
-    <a href="#scenes" data-en="Occasions" data-cs="Příležitosti">Occasions</a>
-    <a href="#inside" data-en="Inside" data-cs="Uvnitř">Inside</a>
-    <a href="#pricing" data-en="Packages" data-cs="Balíčky">Packages</a>
-    <a href="#booking" data-en="Booking" data-cs="Rezervace">Booking</a>
-    <a href="tel:+420702201572">Call</a>
+<header class="nav" id="top">
+  <a class="brand" href="#top">
+    <span class="brand-word">Party Tank</span><span class="brand-sub">PRAGUE</span>
+  </a>
+  <nav class="nav-links">
+    <a href="#routes">Routes</a>
+    <a href="#vehicle">The Car</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
   </nav>
+  <a class="nav-cta" href="#booking">Reserve</a>
+  <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+</header>
 
-  <main>
-    <section class="hero section-shell" aria-labelledby="hero-title">
-      <div class="hero-copy" data-reveal>
-        <p class="eyebrow"><span>Party Tank Prague</span><span data-en="Private Hummer limo experience" data-cs="Soukromý Hummer limo zážitek">Private Hummer limo experience</span></p>
-        <h1 id="hero-title" data-en="The night starts before the club." data-cs="Noc nezačíná v klubu.">The night starts before the club.</h1>
-        <p class="hero-lead" data-en="A private Hummer limo ride through Prague for groups that want the entrance, the photos, the route and the story. Not a taxi. Not a billboard. A moving party scene." data-cs="Soukromá jízda Hummer limuzínou Prahou pro skupiny, které chtějí příjezd, fotky, trasu a zážitek. Ne taxík. Ne billboard. Pohyblivá party scéna.">A private Hummer limo ride through Prague for groups that want the entrance, the photos, the route and the story. Not a taxi. Not a billboard. A moving party scene.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary magnetic" href="#booking" data-en="Start booking request" data-cs="Začít rezervaci">Start booking request</a>
-          <a class="btn btn-ghost" href="#pricing" data-en="View packages" data-cs="Zobrazit balíčky">View packages</a>
-        </div>
-        <div class="proof-strip" aria-label="Key facts">
-          <div><strong>13</strong><span data-en="guests" data-cs="osob">guests</span></div>
-          <div><strong>4 900</strong><span data-en="CZK / hour from" data-cs="Kč / hod. od">CZK / hour from</span></div>
-          <div><strong>Prague</strong><span data-en="night routes" data-cs="noční trasy">night routes</span></div>
-        </div>
-      </div>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#routes">Routes</a>
+  <a href="#vehicle">The Car</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#faq">FAQ</a>
+  <a href="#booking" class="mobile-cta">Reserve</a>
+</div>
 
-      <div class="hero-stage" data-reveal>
-        <div class="stage-frame">
-          <img class="hero-illustration" src="img/hero-night.svg" alt="Stylized Party Tank Prague night ride illustration" />
-          <div class="stage-overlay-card card-top">
-            <small data-en="tonight mode" data-cs="režim večer">tonight mode</small>
-            <strong data-en="pickup → city lights → arrival" data-cs="vyzvednutí → světla města → příjezd">pickup → city lights → arrival</strong>
-          </div>
-          <div class="stage-overlay-card card-bottom">
-            <small data-en="made for" data-cs="ideální pro">made for</small>
-            <strong data-en="stag · hen · wedding · birthday" data-cs="rozlučka · svatba · narozeniny">stag · hen · wedding · birthday</strong>
-          </div>
-        </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-media" id="heroMedia">
+    <img src="assets/hummer-exterior.jpg" alt="White Hummer H2 limousine at dusk">
+    <div class="hero-clouds"></div>
+  </div>
+  <div class="hero-frame">
+    <p class="hero-eyebrow reveal">Prague &amp; Central Bohemia · Private chauffeur</p>
+    <h1 class="hero-title reveal" style="transition-delay:.08s">The night<br>has a <em>route.</em></h1>
+    <div class="hero-foot">
+      <p class="hero-sub reveal" style="transition-delay:.16s">We don't rent out a car. We design a route — through Prague after dark, or out into the Bohemian countryside — and drive it in a nine-metre white Hummer built for sixteen.</p>
+      <div class="hero-actions reveal" style="transition-delay:.24s">
+        <a href="#booking" class="btn btn-primary magnetic">Reserve your route</a>
+        <a href="#routes" class="btn btn-line magnetic">See the routes</a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <form class="quick-panel glass" id="quickPanel" data-reveal>
-        <label><span data-en="Date" data-cs="Datum">Date</span><input type="date" name="quick-date" /></label>
-        <label><span data-en="Guests" data-cs="Osoby">Guests</span><input type="number" name="quick-guests" min="1" max="13" placeholder="1–13" /></label>
-        <label><span data-en="Occasion" data-cs="Akce">Occasion</span>
-          <select name="quick-event">
-            <option>Stag / hen party</option>
-            <option>Wedding</option>
-            <option>Birthday</option>
-            <option>VIP transfer</option>
-            <option>Custom ride</option>
-          </select>
-        </label>
-        <button class="btn btn-primary" type="submit" data-en="Continue" data-cs="Pokračovat">Continue</button>
-      </form>
-    </section>
+<!-- TRUST BAR -->
+<section class="trust reveal">
+  <div class="trust-item"><strong data-count="16">0</strong><span>guests on board</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><strong data-count="9" data-suffix=" m">0</strong><span>stretched Hummer H2</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><strong data-count="2">0</strong><span>routes, Prague &amp; Bohemia</span></div>
+  <div class="trust-sep"></div>
+  <div class="trust-item"><strong data-count="1">0</strong><span>night, fully planned with you</span></div>
+</section>
 
-    <section class="marquee" aria-label="Service highlights">
-      <div class="marquee-track">
-        <span>Hummer H2 Long</span><span>Private chauffeur</span><span>Prague nightlife</span><span>Wedding arrival</span><span>Birthday ride</span><span>Photo stops</span><span>VIP pickup</span><span>13 guests</span>
-        <span>Hummer H2 Long</span><span>Private chauffeur</span><span>Prague nightlife</span><span>Wedding arrival</span><span>Birthday ride</span><span>Photo stops</span><span>VIP pickup</span><span>13 guests</span>
-      </div>
-    </section>
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <p class="manifesto-eyebrow reveal">— What you're actually booking —</p>
+  <p class="manifesto-quote reveal" style="transition-delay:.08s">Not a taxi. Not a tour bus.<br><em>A route, designed around your occasion.</em></p>
+  <p class="manifesto-body reveal" style="transition-delay:.16s">Pickup, road, music, the stops worth stopping for, and an arrival people remember. Tell us the occasion — stag do, wedding, birthday, a night out, or simply a tour of Prague and the hills beyond it — and we build the route around it.</p>
+</section>
 
-    <section class="section-shell split-section" id="flow">
-      <div class="section-kicker" data-reveal>
-        <p class="eyebrow"><span data-en="The flow" data-cs="Průběh">The flow</span></p>
-        <h2 data-en="Build the night as a sequence, not a rental slot." data-cs="Postavte večer jako scénu, ne jako pronájem auta.">Build the night as a sequence, not a rental slot.</h2>
-      </div>
-      <div class="flow-grid">
-        <article class="flow-card glass" data-reveal><span>01</span><h3 data-en="Pickup with impact" data-cs="Vyzvednutí s efektem">Pickup with impact</h3><p data-en="Hotel, restaurant, venue, airport or custom point. The first impression does most of the selling. Tragic, but true." data-cs="Hotel, restaurace, místo akce, letiště nebo vlastní bod. První dojem prodává nejvíc. Smutné, ale funkční.">Hotel, restaurant, venue, airport or custom point. The first impression does most of the selling. Tragic, but true.</p></article>
-        <article class="flow-card glass" data-reveal><span>02</span><h3 data-en="Private cruise" data-cs="Soukromá jízda">Private cruise</h3><p data-en="Music, group energy and Prague outside the windows. The car becomes the private room between stops." data-cs="Hudba, parta a Praha za okny. Auto je soukromá místnost mezi zastávkami.">Music, group energy and Prague outside the windows. The car becomes the private room between stops.</p></article>
-        <article class="flow-card glass" data-reveal><span>03</span><h3 data-en="Photo stop" data-cs="Foto stop">Photo stop</h3><p data-en="Optional scenic stop for photos, wedding shots, birthday flex or proof that the evening was not imagined." data-cs="Volitelná zastávka na fotky, svatební záběry, birthday flex nebo důkaz, že se večer opravdu stal.">Optional scenic stop for photos, wedding shots, birthday flex or proof that the evening was not imagined.</p></article>
-        <article class="flow-card glass" data-reveal><span>04</span><h3 data-en="Arrival" data-cs="Příjezd">Arrival</h3><p data-en="Club, wedding venue, hotel, restaurant or final stop. The point is simple: arrive like the night has a budget." data-cs="Klub, svatební místo, hotel, restaurace nebo finální zastávka. Cíl je jednoduchý: přijet tak, aby večer vypadal dražší.">Club, wedding venue, hotel, restaurant or final stop. The point is simple: arrive like the night has a budget.</p></article>
-      </div>
-    </section>
+<!-- ROUTES -->
+<section class="routes" id="routes">
+  <div class="section-head reveal">
+    <p class="eyebrow">Three ways to use the car</p>
+    <h2>Choose your route.</h2>
+  </div>
 
-    <section class="section-shell scenes" id="scenes">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><span data-en="Choose your scene" data-cs="Vyberte scénu">Choose your scene</span></p>
-        <h2 data-en="Same beast. Different reason to make noise." data-cs="Stejná bestie. Jiný důvod udělat rozruch.">Same beast. Different reason to make noise.</h2>
-      </div>
-      <div class="scene-grid">
-        <article class="scene-card" data-reveal><div class="scene-tag">01</div><h3 data-en="Bachelor & hen parties" data-cs="Rozlučky se svobodou">Bachelor & hen parties</h3><p data-en="Start the night together before the city eats the group in six directions." data-cs="Začněte večer spolu, než město sežere partu šesti směry.">Start the night together before the city eats the group in six directions.</p></article>
-        <article class="scene-card scene-featured" data-reveal><div class="scene-tag">02</div><h3 data-en="Wedding arrival" data-cs="Svatební příjezd">Wedding arrival</h3><p data-en="For couples who prefer a cinematic entrance over pretending subtlety was ever the plan." data-cs="Pro páry, které radši dramatický příjezd než předstírat, že nenápadnost byla někdy plán.">For couples who prefer a cinematic entrance over pretending subtlety was ever the plan.</p></article>
-        <article class="scene-card" data-reveal><div class="scene-tag">03</div><h3 data-en="Birthday ride" data-cs="Narozeninová jízda">Birthday ride</h3><p data-en="A birthday that looks like something happened, not just another table reservation." data-cs="Narozeniny, u kterých je vidět, že se něco stalo, ne jen další rezervace stolu.">A birthday that looks like something happened, not just another table reservation.</p></article>
-        <article class="scene-card" data-reveal><div class="scene-tag">04</div><h3 data-en="VIP pickup" data-cs="VIP vyzvednutí">VIP pickup</h3><p data-en="Airport, hotel or event transfer with more theatre than a regular black car." data-cs="Letiště, hotel nebo event transfer s větším efektem než běžné černé auto.">Airport, hotel or event transfer with more theatre than a regular black car.</p></article>
-      </div>
-    </section>
+  <div class="route-row reveal">
+    <div class="route-card-media parallax-img"><img src="assets/hummer-exterior.jpg" alt="Hummer H2 through Prague at night"></div>
+    <div class="route-card-text">
+      <span class="route-card-num">01</span>
+      <h3>Prague After Dark</h3>
+      <p>Old Town, the riverbank, the castle skyline lit up across the water. A slow, deliberate pass through the city's best backdrop, windows down, the cabin already alive.</p>
+      <ul class="route-meta"><li>1–3 hours</li><li>City of Prague</li><li>Up to 16 guests</li></ul>
+      <a href="#booking" class="route-link">Reserve this route →</a>
+    </div>
+  </div>
 
-    <section class="section-shell inside" id="inside">
-      <div class="inside-media" data-reveal><img src="img/interior-lounge.svg" alt="Original illustration of a limo lounge interior" /></div>
-      <div class="inside-copy" data-reveal>
-        <p class="eyebrow"><span data-en="Inside the tank" data-cs="Uvnitř tanku">Inside the tank</span></p>
-        <h2 data-en="The cabin should feel like a private pre-party, not transport." data-cs="Kabina má působit jako soukromá pre-party, ne doprava.">The cabin should feel like a private pre-party, not transport.</h2>
-        <p data-en="The strongest page angle is not the vehicle specification. It is the feeling: lights, group, music, city outside, and an easy plan. Details support the sale. They should not become the whole personality, because even a Hummer deserves better branding than a spreadsheet." data-cs="Nejsilnější úhel webu nejsou technické parametry. Je to pocit: světla, parta, hudba, město venku a jednoduchý plán. Detaily mají prodej podpořit, ne nahradit celou osobnost, protože i Hummer si zaslouží lepší branding než tabulku.">The strongest page angle is not the vehicle specification. It is the feeling: lights, group, music, city outside, and an easy plan. Details support the sale. They should not become the whole personality, because even a Hummer deserves better branding than a spreadsheet.</p>
-        <div class="chip-cloud" aria-label="Experience details">
-          <span>13 guests</span><span>Private chauffeur</span><span>Music</span><span>Drinks optional</span><span>Photo stops</span><span>English friendly</span>
-        </div>
-      </div>
-    </section>
+  <div class="route-row reverse reveal">
+    <div class="route-card-media parallax-img"><img src="assets/bohemia-field.jpg" alt="Dusk over the Bohemian countryside"></div>
+    <div class="route-card-text">
+      <span class="route-card-num">02</span>
+      <h3>Bohemian Day</h3>
+      <p>Out past the city limits — Karlštejn, vineyard roads, river valleys. A daytime route for groups who want the countryside and the car in the same memory.</p>
+      <ul class="route-meta"><li>Half / full day</li><li>Central Bohemia</li><li>Up to 16 guests</li></ul>
+      <a href="#booking" class="route-link">Reserve this route →</a>
+    </div>
+  </div>
 
-    <section class="section-shell route-section">
-      <div class="route-copy" data-reveal>
-        <p class="eyebrow"><span data-en="Route mood" data-cs="Mood trasy">Route mood</span></p>
-        <h2 data-en="Make the city part of the experience." data-cs="Udělejte z města součást zážitku.">Make the city part of the experience.</h2>
-        <p data-en="Pickup, cruise, photo stop, arrival. The website should sell that rhythm. People do not buy one hour. They buy the version of themselves arriving somewhere in a ridiculous luxury beast. Humanity is fragile, but marketing is clear." data-cs="Vyzvednutí, jízda, foto stop, příjezd. Web má prodávat tenhle rytmus. Lidé nekupují jednu hodinu. Kupují verzi sebe sama, která někam přijede v absurdně luxusní bestii. Lidstvo je křehké, ale marketing je jasný.">Pickup, cruise, photo stop, arrival. The website should sell that rhythm. People do not buy one hour. They buy the version of themselves arriving somewhere in a ridiculous luxury beast. Humanity is fragile, but marketing is clear.</p>
-      </div>
-      <div class="route-media glass" data-reveal><img src="img/route-glow.svg" alt="Abstract Prague route map" /></div>
-    </section>
+  <div class="route-row reveal">
+    <div class="route-card-media parallax-img"><img src="assets/hummer-interior.jpg" alt="Neon-lit interior lounge"></div>
+    <div class="route-card-text">
+      <span class="route-card-num">03</span>
+      <h3>Your Occasion</h3>
+      <p>Stag and hen parties, weddings, birthdays, a proper night out — built entirely around your timeline, your stops, your people. If it fits in the car, we'll route it.</p>
+      <ul class="route-meta"><li>Custom duration</li><li>Prague or Bohemia</li><li>Up to 16 guests</li></ul>
+      <a href="#booking" class="route-link">Reserve this route →</a>
+    </div>
+  </div>
+</section>
 
-    <section class="section-shell pricing" id="pricing">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><span data-en="Packages" data-cs="Balíčky">Packages</span></p>
-        <h2 data-en="Simple enough to choose. Flexible enough to plan." data-cs="Dost jednoduché na výběr. Dost flexibilní na plán.">Simple enough to choose. Flexible enough to plan.</h2>
-      </div>
-      <div class="pricing-grid" id="pricingGrid">
-        <button class="price-card glass active" type="button" data-package="1 hour city ride" data-price="4900" data-reveal><small data-en="Quick scene" data-cs="Krátká scéna">Quick scene</small><h3>1 hour</h3><strong>4 900 Kč</strong><p data-en="City ride, pickup, arrival or short celebration route." data-cs="Městská jízda, vyzvednutí, příjezd nebo kratší oslavná trasa.">City ride, pickup, arrival or short celebration route.</p></button>
-        <button class="price-card glass featured" type="button" data-package="2 hour party ride" data-price="9800" data-reveal><small data-en="Best start" data-cs="Nejlepší start">Best start</small><h3>2 hours</h3><strong>9 800 Kč</strong><p data-en="A proper beginning for stag, hen, birthday or Prague night events." data-cs="Pořádný začátek pro rozlučky, narozeniny nebo pražský večer.">A proper beginning for stag, hen, birthday or Prague night events.</p></button>
-        <button class="price-card glass" type="button" data-package="3 hour extended ride" data-price="14700" data-reveal><small data-en="Full mood" data-cs="Plný mood">Full mood</small><h3>3 hours</h3><strong>14 700 Kč</strong><p data-en="Longer route, more stops, bigger group energy." data-cs="Delší trasa, víc zastávek, větší energie party.">Longer route, more stops, bigger group energy.</p></button>
-        <button class="price-card glass" type="button" data-package="Airport or hotel transfer" data-price="5500" data-reveal><small data-en="Arrival" data-cs="Příjezd">Arrival</small><h3>Transfer</h3><strong>from 5 500 Kč</strong><p data-en="Airport, hotel, venue or VIP point-to-point arrival." data-cs="Letiště, hotel, místo akce nebo VIP příjezd z bodu do bodu.">Airport, hotel, venue or VIP point-to-point arrival.</p></button>
-      </div>
-      <p class="price-note" id="priceNote" data-en="Selected: 1 hour city ride · from 4 900 Kč" data-cs="Vybráno: 1 hodina městská jízda · od 4 900 Kč">Selected: 1 hour city ride · from 4 900 Kč</p>
-    </section>
+<!-- MAP (signature) -->
+<section class="map-section">
+  <div class="section-head reveal">
+    <p class="eyebrow">The territory</p>
+    <h2>Prague to the hills of Bohemia.</h2>
+    <p class="section-sub">One car, two directions. The city route stays inside Prague; the Bohemian route runs out past Karlštejn into vineyard country. Either way, we plan the stops with you before the date.</p>
+  </div>
+  <div class="map-wrap reveal">
+    <svg viewBox="0 0 1000 480" class="map-svg" preserveAspectRatio="xMidYMid meet">
+      <rect width="1000" height="480" fill="#141213"/>
+      <path d="M0,340 C150,320 220,380 320,360 C420,340 460,280 560,290 C660,300 700,240 800,220 C880,205 940,220 1000,210" fill="none" stroke="#2a2725" stroke-width="36" stroke-linecap="round" opacity="0.6"/>
+      <path id="mapRoutePath" d="M0,340 C150,320 220,380 320,360 C420,340 460,280 560,290 C660,300 700,240 800,220 C880,205 940,220 1000,210" fill="none" stroke="#ff7a3d" stroke-width="1.6" stroke-dasharray="2 8" stroke-linecap="round"/>
 
-    <section class="section-shell faq-section" id="faq">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow"><span>FAQ</span></p>
-        <h2 data-en="Questions before someone overthinks booking a giant limo." data-cs="Otázky předtím, než někdo začne přemýšlet až moc.">Questions before someone overthinks booking a giant limo.</h2>
-      </div>
-      <div class="faq-list" data-reveal>
-        <details><summary data-en="How many people fit inside?" data-cs="Kolik lidí se vejde dovnitř?">How many people fit inside?</summary><p data-en="The Hummer limo is suitable for up to 13 guests." data-cs="Hummer limuzína je vhodná až pro 13 osob.">The Hummer limo is suitable for up to 13 guests.</p></details>
-        <details><summary data-en="Is it good for weddings?" data-cs="Hodí se to na svatbu?">Is it good for weddings?</summary><p data-en="Yes. It works well for arrival, photo moments, transfer between venues or a stronger wedding-night entrance." data-cs="Ano. Hodí se na příjezd, focení, přejezd mezi místy nebo výraznější svatební vstup.">Yes. It works well for arrival, photo moments, transfer between venues or a stronger wedding-night entrance.</p></details>
-        <details><summary data-en="Can we choose the route?" data-cs="Můžeme si vybrat trasu?">Can we choose the route?</summary><p data-en="Yes. Add pickup, destination and desired stops in the booking request. The final route is confirmed individually." data-cs="Ano. Do poptávky napište vyzvednutí, cíl a požadované zastávky. Finální trasa se potvrdí individuálně.">Yes. Add pickup, destination and desired stops in the booking request. The final route is confirmed individually.</p></details>
-        <details><summary data-en="Does the form already send requests?" data-cs="Odesílá formulář už poptávky?">Does the form already send requests?</summary><p data-en="Not in this prototype. It is prepared visually. Connect it later to Formspree, Make, n8n, e-mail or your own backend." data-cs="V tomhle prototypu ještě ne. Je připravený vizuálně. Později se napojí na Formspree, Make, n8n, e-mail nebo vlastní backend.">Not in this prototype. It is prepared visually. Connect it later to Formspree, Make, n8n, e-mail or your own backend.</p></details>
-      </div>
-    </section>
+      <g class="map-pin" transform="translate(110,360)">
+        <circle r="6" fill="#0b0a0a" stroke="#ff7a3d" stroke-width="2"/>
+        <text x="0" y="-16" text-anchor="middle" fill="#f3efe7" font-family="Inter" font-size="13" font-weight="600">Prague</text>
+        <text x="0" y="28" text-anchor="middle" fill="#968f88" font-family="Inter" font-size="11">pickup &amp; city route</text>
+      </g>
+      <g class="map-pin" transform="translate(400,345)">
+        <circle r="5" fill="#0b0a0a" stroke="#52e0c4" stroke-width="2"/>
+        <text x="0" y="-14" text-anchor="middle" fill="#f3efe7" font-family="Inter" font-size="12" font-weight="600">Karlštejn</text>
+      </g>
+      <g class="map-pin" transform="translate(660,255)">
+        <circle r="5" fill="#0b0a0a" stroke="#52e0c4" stroke-width="2"/>
+        <text x="0" y="-14" text-anchor="middle" fill="#f3efe7" font-family="Inter" font-size="12" font-weight="600">Vineyard roads</text>
+      </g>
+      <g class="map-pin" transform="translate(900,213)">
+        <circle r="6" fill="#0b0a0a" stroke="#ff7a3d" stroke-width="2"/>
+        <text x="0" y="-16" text-anchor="middle" fill="#f3efe7" font-family="Inter" font-size="13" font-weight="600">Central Bohemia</text>
+        <text x="0" y="28" text-anchor="middle" fill="#968f88" font-family="Inter" font-size="11">day route</text>
+      </g>
+    </svg>
+  </div>
+</section>
 
-    <section class="section-shell booking" id="booking">
-      <div class="booking-panel glass">
-        <div class="booking-copy" data-reveal>
-          <p class="eyebrow"><span data-en="Booking request" data-cs="Rezervace">Booking request</span></p>
-          <h2 data-en="Send the date. We prepare the beast." data-cs="Pošlete termín. Bestii připravíme.">Send the date. We prepare the beast.</h2>
-          <p data-en="This is still a design-stage form. The next technical step is automation: form submission → e-mail → Google Sheet / CRM → confirmation message." data-cs="Tohle je zatím formulář pro návrh. Další technický krok je automatizace: formulář → e-mail → Google Sheet / CRM → potvrzení klientovi.">This is still a design-stage form. The next technical step is automation: form submission → e-mail → Google Sheet / CRM → confirmation message.</p>
-          <div class="contact-stack">
-            <a href="tel:+420702201572">+420 702 201 572</a>
-            <a href="mailto:info@hummer-prague.cz">info@hummer-prague.cz</a>
-            <span>Prague, Czech Republic</span>
-          </div>
-        </div>
+<!-- VEHICLE -->
+<section class="vehicle" id="vehicle">
+  <div class="vehicle-media parallax-img">
+    <img src="assets/hummer-interior.jpg" alt="Neon-lit interior lounge of the Hummer H2">
+  </div>
+  <div class="vehicle-text reveal">
+    <p class="eyebrow">The vehicle</p>
+    <h2>Hummer H2 Long.<br>White. Nine metres.</h2>
+    <p class="vehicle-lead">One car, built to be seen from across the bridge, and to disappear into a private lounge the moment the door closes.</p>
+    <dl class="spec-list">
+      <div><dt>Capacity</dt><dd>Up to 16 guests, wraparound leather lounge</dd></div>
+      <div><dt>On board</dt><dd>Mini-bar, full sound system, mood lighting</dd></div>
+      <div><dt>Privacy</dt><dd>Tinted windows, partition to the driver</dd></div>
+      <div><dt>Length</dt><dd>9 metres of stretched Hummer H2</dd></div>
+    </dl>
+    <a href="#booking" class="btn btn-primary magnetic">Check availability</a>
+  </div>
+</section>
 
-        <form class="booking-form" id="bookingForm" data-reveal>
-          <div class="form-grid">
-            <label><span data-en="Name" data-cs="Jméno">Name</span><input type="text" name="name" placeholder="Your name" required /></label>
-            <label><span data-en="Email" data-cs="E-mail">Email</span><input type="email" name="email" placeholder="you@example.com" required /></label>
-            <label><span data-en="Phone / WhatsApp" data-cs="Telefon / WhatsApp">Phone / WhatsApp</span><input type="tel" name="phone" placeholder="+420 ..." /></label>
-            <label><span data-en="Guests" data-cs="Počet osob">Guests</span><input type="number" name="guests" min="1" max="13" placeholder="1–13" /></label>
-            <label><span data-en="Date" data-cs="Datum">Date</span><input type="date" name="date" /></label>
-            <label><span data-en="Package" data-cs="Balíček">Package</span><input type="text" name="package" id="selectedPackage" value="1 hour city ride" /></label>
-          </div>
-          <label><span data-en="Pickup / plan" data-cs="Vyzvednutí / plán">Pickup / plan</span><textarea name="message" rows="5" placeholder="Pickup point, time, destination, event type, route idea..."></textarea></label>
-          <button class="btn btn-primary btn-full magnetic" type="submit" data-en="Send request" data-cs="Odeslat poptávku">Send request</button>
-          <p class="form-status" id="formStatus" data-en="Demo mode: the form does not send yet." data-cs="Demo režim: formulář zatím neodesílá.">Demo mode: the form does not send yet.</p>
-        </form>
-      </div>
-    </section>
-  </main>
+<!-- PROCESS -->
+<section class="process">
+  <div class="section-head reveal">
+    <p class="eyebrow">How it works</p>
+    <h2>Four steps, no surprises.</h2>
+  </div>
+  <div class="process-list">
+    <div class="process-row reveal">
+      <span class="process-n">01</span>
+      <div><h3>Tell us the date</h3><p>Occasion, group size, rough idea of the route — Prague, Bohemia, or both.</p></div>
+    </div>
+    <div class="process-row reveal" style="transition-delay:.06s">
+      <span class="process-n">02</span>
+      <div><h3>We route it</h3><p>Pickup point, stops, timing and music sorted around your event, confirmed by message.</p></div>
+    </div>
+    <div class="process-row reveal" style="transition-delay:.12s">
+      <span class="process-n">03</span>
+      <div><h3>You ride</h3><p>We arrive on time, drinks cold, and drive the route exactly as planned.</p></div>
+    </div>
+    <div class="process-row reveal" style="transition-delay:.18s">
+      <span class="process-n">04</span>
+      <div><h3>You arrive</h3><p>On schedule, in a 9-metre white Hummer, with a story for the rest of the night.</p></div>
+    </div>
+  </div>
+</section>
 
-  <footer class="site-footer section-shell">
-    <div><strong>Party Tank Prague</strong><p data-en="Private Hummer limo experience in Prague." data-cs="Soukromý Hummer limo zážitek v Praze.">Private Hummer limo experience in Prague.</p></div>
-    <div class="footer-links"><a href="#top" data-en="Back to top" data-cs="Nahoru">Back to top</a><a href="#pricing" data-en="Packages" data-cs="Balíčky">Packages</a><a href="#booking" data-en="Booking" data-cs="Rezervace">Booking</a></div>
-  </footer>
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="section-head reveal">
+    <p class="eyebrow">The mood</p>
+    <h2>Night luxury, beast mode.</h2>
+    <p class="section-sub">Two real shots from the car for now — these slots are built to take full photography as it comes in.</p>
+  </div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item gallery-large"><img src="assets/hummer-exterior.jpg" alt="White Hummer H2 limousine, Prague night"></div>
+    <div class="gallery-item"><img src="assets/hummer-interior.jpg" alt="Neon lounge interior with champagne bar"></div>
+    <div class="gallery-item illustration" data-caption="Castle skyline">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="400" fill="#141213"/>
+        <polygon points="60,300 60,220 80,220 80,180 100,200 100,150 120,180 120,220 150,220 150,150 170,180 170,300" fill="none" stroke="#ff7a3d" stroke-width="1.3" opacity="0.85"/>
+        <line x1="40" y1="300" x2="360" y2="300" stroke="#52e0c4" stroke-width="0.8" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="gallery-item illustration" data-caption="Vineyard route">
+      <svg viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="400" height="400" fill="#16131a"/>
+        <path d="M40,300 Q200,250 360,300" fill="none" stroke="#52e0c4" stroke-width="1.2" opacity="0.85"/>
+        <path d="M40,330 Q200,280 360,330" fill="none" stroke="#ff7a3d" stroke-width="1" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="gallery-item gallery-wide illustration" data-caption="The cabin, lit">
+      <svg viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+        <rect width="800" height="400" fill="#141213"/>
+        <line x1="100" y1="80" x2="700" y2="80" stroke="#ff7a3d" stroke-width="1" opacity="0.6"/>
+        <line x1="100" y1="120" x2="700" y2="120" stroke="#52e0c4" stroke-width="1" opacity="0.5"/>
+        <path d="M120,320 Q400,260 680,320" fill="none" stroke="#968f88" stroke-width="1" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
 
-  <a class="sticky-cta" href="#booking" data-en="Book the beast" data-cs="Rezervovat bestii">Book the beast</a>
+<!-- SOCIAL PROOF -->
+<section class="proof">
+  <div class="proof-track reveal">
+    <blockquote><p>"Picked us up right on time, the whole street stopped to look. Best entrance any of us has ever had."</p><cite>— Stag party, Prague</cite></blockquote>
+    <blockquote><p>"We did the Bohemian route for the wedding photos at Karlštejn. Worth every crown."</p><cite>— Wedding party, Central Bohemia</cite></blockquote>
+    <blockquote><p>"Mini-bar was stocked, music was ours, driver knew exactly where to stop for photos."</p><cite>— Birthday group, Prague</cite></blockquote>
+  </div>
+  <p class="proof-note">Placeholder quotes — swap for real reviews once you have them.</p>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-head reveal">
+    <p class="eyebrow">Pricing</p>
+    <h2>Starting points, not the final word.</h2>
+    <p class="section-sub">Final price depends on date, duration and route. Nothing is charged until everything is confirmed.</p>
+  </div>
+  <div class="pricing-grid reveal">
+    <div class="pricing-card">
+      <span class="pricing-tag">Prague After Dark</span>
+      <p class="pricing-from">From <strong>—— Kč</strong></p>
+      <p class="pricing-desc">1–3 hour city route, up to 16 guests.</p>
+      <a href="#booking" class="route-link">Request price →</a>
+    </div>
+    <div class="pricing-card pricing-featured">
+      <span class="pricing-tag">Your Occasion</span>
+      <p class="pricing-from">From <strong>—— Kč</strong></p>
+      <p class="pricing-desc">Custom route, timed around your event.</p>
+      <a href="#booking" class="route-link">Request price →</a>
+    </div>
+    <div class="pricing-card">
+      <span class="pricing-tag">Bohemian Day</span>
+      <p class="pricing-from">From <strong>—— Kč</strong></p>
+      <p class="pricing-desc">Half or full day, Prague into Central Bohemia.</p>
+      <a href="#booking" class="route-link">Request price →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-head reveal">
+    <p class="eyebrow">FAQ</p>
+    <h2>Before you ask.</h2>
+  </div>
+  <div class="faq-list reveal">
+    <details>
+      <summary>How many people fit inside?</summary>
+      <p>Up to 16 guests in the wraparound lounge. Tell us your group size and we'll confirm comfort for the route.</p>
+    </details>
+    <details>
+      <summary>Can the route leave Prague?</summary>
+      <p>Yes — the Bohemian Day route runs out toward Karlštejn and the vineyard roads beyond it. Tell us what you'd like to see.</p>
+    </details>
+    <details>
+      <summary>Can we bring our own drinks?</summary>
+      <p>The on-board mini-bar is yours for the ride. Bring what you like, we'll keep it cold.</p>
+    </details>
+    <details>
+      <summary>How far ahead should we book?</summary>
+      <p>Weekends and stag/hen season fill fast — 2–3 weeks out is safest, but ask about last-minute availability.</p>
+    </details>
+    <details>
+      <summary>Is the price per person or per ride?</summary>
+      <p>Per ride, not per person — split across 16 guests it's usually less than a fleet of taxis.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+  <h2>The car is free most nights.<br><em>Yours doesn't have to wait.</em></h2>
+  <a href="#booking" class="btn btn-primary magnetic">Reserve your route</a>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="booking">
+  <div class="section-head reveal">
+    <p class="eyebrow">Booking request</p>
+    <h2>Tell us the date.<br>We'll route the night.</h2>
+    <p class="section-sub">This is a request, not a charge — we confirm availability and price before anything is locked in.</p>
+  </div>
+  <form class="booking-form reveal" id="bookingForm">
+    <div class="form-row">
+      <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+      <label>Email<input type="email" name="email" required placeholder="you@email.com"></label>
+    </div>
+    <div class="form-row">
+      <label>Phone / WhatsApp<input type="tel" name="phone" placeholder="+420 ..."></label>
+      <label>Date<input type="date" name="date" required></label>
+    </div>
+    <div class="form-row">
+      <label>Route
+        <select name="route">
+          <option value="">Choose a route</option>
+          <option>Prague After Dark</option>
+          <option>Bohemian Day</option>
+          <option>Your Occasion (custom)</option>
+        </select>
+      </label>
+      <label>Guests<input type="number" name="guests" min="1" max="16" placeholder="Up to 16"></label>
+    </div>
+    <label class="form-full">Tell us about the night<textarea name="notes" rows="4" placeholder="Pickup location, route ideas, occasion details..."></textarea></label>
+    <button type="submit" class="btn btn-primary btn-wide magnetic">Send booking request</button>
+    <p class="form-note" id="formNote">Demo mode — connect this form to Formspree, email or your CRM to receive requests.</p>
+  </form>
+</section>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="brand-word">Party Tank</span><span class="brand-sub">PRAGUE</span>
+    </div>
+    <div class="footer-links">
+      <a href="#routes">Routes</a>
+      <a href="#vehicle">The Car</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#booking">Booking</a>
+    </div>
+    <div class="footer-contact">
+      <a href="mailto:info@partytankprague.com">info@partytankprague.com</a>
+      <a href="tel:+420702201572">+420 702 201 572</a>
+      <a href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© Party Tank Prague — a Hummer H2 routed through Prague and Central Bohemia.</span>
+  </div>
+</footer>
+
+<a href="#booking" class="sticky-cta">Reserve your route</a>
+
+<script src="assets/script.js"></script>
 </body>
 </html>
