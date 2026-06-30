@@ -4,14 +4,78 @@ const mobileMenu = document.getElementById('mobileMenu');
 burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
 
-/* ---------- Booking form (demo) ---------- */
+/* ---------- Language toggle (EN / CZ) ---------- */
+function applyLanguage(lang) {
+  const dict = (typeof TRANSLATIONS !== 'undefined') ? TRANSLATIONS[lang] : null;
+  if (!dict) return;
+  document.documentElement.setAttribute('lang', lang === 'cs' ? 'cs' : 'en');
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.getAttribute('data-i18n-html');
+    if (dict[key] !== undefined) el.innerHTML = dict[key];
+  });
+  localStorage.setItem('ptp_lang', lang);
+  document.querySelectorAll('.lang-switch').forEach(btn => {
+    btn.textContent = lang === 'cs' ? 'CZ / EN' : 'EN / CZ';
+  });
+}
+function toggleLanguage() {
+  const current = localStorage.getItem('ptp_lang') || 'en';
+  applyLanguage(current === 'en' ? 'cs' : 'en');
+}
+document.getElementById('langSwitch')?.addEventListener('click', toggleLanguage);
+document.getElementById('langSwitchMobile')?.addEventListener('click', toggleLanguage);
+applyLanguage(localStorage.getItem('ptp_lang') || 'en');
+
+/* ---------- Cookie banner ---------- */
+const cookieBanner = document.getElementById('cookieBanner');
+const cookieAccept = document.getElementById('cookieAccept');
+if (cookieBanner) {
+  if (!localStorage.getItem('ptp_cookie_ack')) {
+    setTimeout(() => cookieBanner.classList.add('show'), 800);
+  }
+  cookieAccept?.addEventListener('click', () => {
+    localStorage.setItem('ptp_cookie_ack', '1');
+    cookieBanner.classList.remove('show');
+  });
+}
+
+/* ---------- Booking form ---------- */
 const form = document.getElementById('bookingForm');
 const note = document.getElementById('formNote');
-form.addEventListener('submit', (e) => {
+const formIsConfigured = form && !form.action.includes('YOUR_FORM_ID');
+
+form.addEventListener('submit', async (e) => {
+  if (!formIsConfigured) {
+    e.preventDefault();
+    note.textContent = 'Demo mode — connect this form to Formspree (see code comment above) to receive real requests.';
+    note.style.color = '#52e0c4';
+    form.reset();
+    return;
+  }
   e.preventDefault();
-  note.textContent = 'Request captured locally (demo). Connect this form to Formspree, email or your CRM to actually receive it.';
-  note.style.color = '#52e0c4';
-  form.reset();
+  note.textContent = 'Sending…';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      note.textContent = 'Request sent — we will get back to you to confirm.';
+      note.style.color = '#52e0c4';
+      form.reset();
+    } else {
+      note.textContent = 'Something went wrong sending that — try again or email us directly.';
+      note.style.color = '#ff7a3d';
+    }
+  } catch (err) {
+    note.textContent = 'Something went wrong sending that — try again or email us directly.';
+    note.style.color = '#ff7a3d';
+  }
 });
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

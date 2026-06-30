@@ -315,6 +315,36 @@ textarea{resize:vertical;}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1; transform:none;}
 }
+
+/* ===== LANGUAGE SWITCH ===== */
+.lang-switch{
+  background:none; border:1px solid rgba(243,239,231,0.25); color:var(--ink-dim);
+  font-family:var(--body); font-size:0.72rem; font-weight:700; letter-spacing:0.04em;
+  padding:8px 14px; border-radius:20px; cursor:pointer; transition:all .2s; margin-right:18px;
+}
+.lang-switch:hover{border-color:var(--copper); color:var(--copper-soft);}
+.lang-switch-mobile{margin-right:0; font-size:0.95rem; padding:12px 22px;}
+
+.pricing-note{
+  text-align:center; font-size:0.76rem; color:var(--ink-dim); opacity:0.65;
+  margin-top:34px; padding:0 5%;
+}
+
+/* ===== COOKIE BANNER ===== */
+.cookie-banner{
+  position:fixed; left:20px; right:20px; bottom:20px; z-index:400; max-width:560px;
+  background:var(--panel); border:1px solid var(--line); border-radius:8px;
+  padding:22px 24px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.6);
+  transform:translateY(140%); transition:transform .4s cubic-bezier(.16,.8,.3,1);
+}
+.cookie-banner.show{transform:translateY(0);}
+.cookie-banner p{font-size:0.82rem; color:var(--ink-dim); margin-bottom:14px; line-height:1.5;}
+.cookie-actions{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+.cookie-actions a{font-size:0.78rem; color:var(--copper-soft); font-weight:600;}
+.cookie-actions button{
+  background:var(--copper); color:#0b0a0a; border:none; padding:10px 22px; border-radius:3px;
+  font-weight:700; font-size:0.8rem; cursor:pointer; font-family:var(--body);
+}
 @media(max-width:1000px){
   .nav-links{display:none;}
   .nav-burger{display:flex;}
@@ -331,6 +361,7 @@ textarea{resize:vertical;}
   .trust{gap:28px;}
   .sticky-cta{display:block;}
   .footer{padding-bottom:110px;}
+  .lang-switch{margin-right:10px; padding:7px 10px; font-size:0.66rem;}
 }
 @media(max-width:600px){
   section{padding:90px 6%;}
@@ -338,4 +369,6 @@ textarea{resize:vertical;}
   .form-row{grid-template-columns:1fr;}
   .manifesto{padding:100px 6%;}
   .final-cta{padding:120px 6%;}
+  .cookie-banner{left:14px; right:14px; bottom:90px; padding:18px;}
+  .cookie-actions{flex-direction:column; align-items:flex-start;}
 }
