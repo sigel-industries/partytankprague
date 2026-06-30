@@ -206,7 +206,7 @@ section{padding:120px 5%;}
 /* ===== OCCASIONS ===== */
 .occasions{background:var(--bg);}
 .occasion-grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line);
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1px; background:var(--line);
   border:1px solid var(--line); border-radius:8px; overflow:hidden;
 }
 .occasion-card{
@@ -219,13 +219,25 @@ section{padding:120px 5%;}
 /* ===== GALLERY ===== */
 .gallery{background:var(--bg-soft);}
 .gallery-grid{
-  display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:220px; gap:14px;
+  display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:1fr; gap:14px;
 }
-.gallery-item{border-radius:6px; overflow:hidden; position:relative;}
+.gallery-item{border-radius:6px; overflow:hidden; position:relative; aspect-ratio:1/1;}
 .gallery-item img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
 .gallery-item:hover img{transform:scale(1.06);}
 .gallery-large{grid-column:span 2; grid-row:span 2;}
-.gallery-wide{grid-column:span 2;}
+.gallery-wide{grid-column:span 2; aspect-ratio:auto;}
+.gallery-item.illustration{
+  border:1px solid var(--line); background:var(--panel);
+}
+.gallery-item.illustration svg{width:100%; height:100%; display:block;}
+.gallery-item.illustration::before{
+  content:attr(data-caption);
+  position:absolute; top:14px; left:14px;
+  font-size:0.65rem; letter-spacing:0.14em; text-transform:uppercase;
+  color:var(--orange-soft); font-weight:700;
+  padding:5px 10px; border:1px solid rgba(255,106,31,0.4); border-radius:3px;
+  background:rgba(10,6,16,0.55); backdrop-filter:blur(4px);
+}
 
 /* ===== PACKAGES ===== */
 .packages{background:var(--bg);}
