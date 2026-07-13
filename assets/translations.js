@@ -50,7 +50,7 @@ const TRANSLATIONS = {
     proc4h: "You arrive", proc4p: "On schedule, in a 9-metre white Hummer, with a story for the rest of the night.",
 
     gal_eyebrow: "The mood", gal_h2: "Night luxury, beast mode.",
-    gal_sub: "Two real shots from the car for now — these slots are built to take full photography as it comes in.",
+    gal_sub: "Real shots from the car — more added as fresh photography comes in.",
 
     proof1: "\u201cPicked us up right on time, the whole street stopped to look. Best entrance any of us has ever had.\u201d",
     proof1c: "— Stag party, Prague",
@@ -145,7 +145,7 @@ const TRANSLATIONS = {
     proc4h: "Dorazíte", proc4p: "Přesně podle plánu, v devítimetrovém bílém Hummeru, s historkou na zbytek večera.",
 
     gal_eyebrow: "Atmosféra", gal_h2: "Noční luxus v plné palbě.",
-    gal_sub: "Zatím dva reálné záběry z vozu — tato místa jsou připravená na ostrou fotodokumentaci, jakmile bude k dispozici.",
+    gal_sub: "Reálné záběry z vozu — další přibudou, jakmile bude k dispozici čerstvá fotodokumentace.",
 
     proof1: "\u201eVyzvedli nás přesně na čas, celá ulice se otáčela. Nejlepší příjezd, jaký jsme kdy zažili.\u201c",
     proof1c: "— Rozlučka se svobodou, Praha",
