@@ -3,8 +3,8 @@ const TRANSLATIONS = {
     nav_routes: "Routes", nav_car: "The Car", nav_gallery: "Gallery", nav_pricing: "Pricing", nav_faq: "FAQ", nav_reserve: "Reserve",
 
     hero_eyebrow: "Prague & Central Bohemia · Private chauffeur",
-    hero_title: "The night<br>has a <em>route.</em>",
-    hero_sub: "We don't rent out a car. We design a route — through Prague after dark, or out into the Bohemian countryside — and drive it in a nine-metre white Hummer built for sixteen.",
+    hero_title: "The street stopped.<br>Then it saw the <em>Hummer.</em>",
+    hero_sub: "Sixteen guests inside, mini-bar cold, sound system loud — one stag night that started the second the doors opened. That's the ride we build for every crossing of Prague, every route into Bohemia: not a rental, an entrance.",
     hero_cta1: "Reserve your route", hero_cta2: "See the routes",
 
     trust1: "guests on board", trust2: "stretched Hummer H2", trust3: "routes, Prague & Bohemia", trust4: "night, fully planned with you",
@@ -98,8 +98,8 @@ const TRANSLATIONS = {
     nav_routes: "Trasy", nav_car: "Vůz", nav_gallery: "Galerie", nav_pricing: "Ceník", nav_faq: "FAQ", nav_reserve: "Rezervovat",
 
     hero_eyebrow: "Praha a Střední Čechy · Soukromý šofér",
-    hero_title: "Noc<br>má svou <em>trasu.</em>",
-    hero_sub: "Auto si u nás nepůjčíte — naplánujeme vám trasu. Praha po setmění, nebo výlet do středočeské krajiny, v devítimetrovém bílém Hummeru až pro šestnáct lidí.",
+    hero_title: "Ulice ztichla.<br>Pak uviděla <em>Hummer.</em>",
+    hero_sub: "Šestnáct lidí uvnitř, mini-bar vychlazený, hudba nahlas — rozlučková noc, která začala ve chvíli, kdy se otevřely dveře. Takhle stavíme každou jízdu Prahou i výlet do Čech: ne pronájem, ale příjezd.",
     hero_cta1: "Zarezervovat trasu", hero_cta2: "Zobrazit trasy",
 
     trust1: "hostů na palubě", trust2: "dlouhý Hummer H2", trust3: "trasy, Praha a Čechy", trust4: "noc, naplánovaná s vámi",

@@ -35,10 +35,10 @@ ul{list-style:none;}
 
 .eyebrow{
   font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase;
-  color:var(--copper-soft); font-weight:600; margin-bottom:16px;
+  color:var(--copper-soft); font-weight:800; margin-bottom:16px;
 }
-h1,h2,h3{font-family:var(--display); font-weight:500; letter-spacing:-0.01em;}
-em{font-style:italic; font-weight:400; color:var(--copper-soft);}
+h1,h2,h3{font-family:var(--display); font-weight:300; letter-spacing:-0.01em;}
+em{font-style:italic; font-weight:900; color:var(--copper-soft);}
 
 .btn{
   display:inline-block; padding:15px 28px; border-radius:2px;
@@ -91,7 +91,7 @@ em{font-style:italic; font-weight:400; color:var(--copper-soft);}
   background:linear-gradient(180deg, rgba(11,10,10,0.3) 0%, rgba(11,10,10,0.55) 55%, var(--bg) 100%);
 }
 .hero-frame{padding:220px 5% 80px; max-width:1400px;}
-.hero-eyebrow{font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--copper-soft); margin-bottom:22px;}
+.hero-eyebrow{font-size:0.78rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--copper-soft); margin-bottom:22px; font-weight:800;}
 .hero-title{font-size:clamp(3.2rem, 8vw, 7.5rem); line-height:0.96; margin-bottom:48px; max-width:900px;}
 .hero-foot{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; border-top:1px solid var(--line); padding-top:30px;}
 .hero-sub{font-size:1.05rem; color:var(--ink-dim); max-width:440px;}
