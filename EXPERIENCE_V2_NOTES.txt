@@ -1,0 +1,16 @@
+PARTY TANK PRAGUE — EXPERIENCE JOURNEY V2
+
+Scope of this iteration
+- Hero left unchanged.
+- Rebuilt the Experience Journey art direction and mobile layout.
+- Added five visually distinct scene treatments: Prague, Wedding, Birthday, VIP, Party.
+- Added scene chapter numbering, mood spectrum, layered atmosphere, and smoother crossfades.
+- Removed the persistent orange mobile reservation bar while the Experience Journey is visible.
+- Refined the mobile typography and controls so the title no longer clips.
+- Refined the experience detail modal and tied its accent colour to the selected scene.
+- Added Czech/English labels for the new interface elements.
+- Fixed the vehicle heading rendering literal <br> text.
+
+Important
+- Existing photos are still provisional assets. The visual system is ready for final scene-specific photography later.
+- No deployment or GitHub changes were made.

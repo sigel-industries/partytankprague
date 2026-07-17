@@ -1,0 +1,17 @@
+PARTY TANK PRAGUE — V3 CHECKPOINT
+
+Scope of this iteration:
+- Experience Journey V2 retained as the approved working direction.
+- Rebuilt the old Vehicle section into an experience-led "Inside the Tank" section.
+- Added a responsive visual stage, 13-person capacity statement, exterior scale inset,
+  four interactive feature chapters, EN/CZ translations and mobile layout.
+- No deployment and no Git commit.
+- Existing imagery remains provisional; the interior source is art-directed/cropped so its
+  source counter is not visible in the section.
+
+Review only:
+1. Transition from the last Experience scene into Inside the Tank.
+2. Desktop balance between visual and feature list.
+3. Mobile crop and readability.
+4. Tapping/hovering feature rows changes the image focus and active accent.
+5. Whether the section sells what happens inside rather than reading as a specification sheet.

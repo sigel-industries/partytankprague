@@ -1,0 +1,13 @@
+PARTY TANK PRAGUE — EXPERIENCE IMAGES V4
+
+Main scroll scenes:
+01 Prague   — view from inside the limo across Prague; calm opening and anticipation.
+02 Wedding  — intimate couple in foreground, limo as part of the memory; warm romantic scene.
+03 Birthday — group inside the limo raising glasses; social energy increases.
+04 VIP      — rear/side arrival at a luxury entrance; quiet prestige and darker palette.
+05 Party    — dynamic low-angle exterior with open doors and neon; visual climax.
+
+Each modal contains its own three-image gallery in assets/experiences/.
+All new images are WebP, resized/optimized for web use.
+Hero and The Tank section were not replaced in this version.
+Booking form remains unchanged and will be handled later.

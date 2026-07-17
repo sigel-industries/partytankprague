@@ -21,6 +21,9 @@ function applyLanguage(lang) {
   document.querySelectorAll('.lang-switch').forEach(btn => {
     btn.textContent = lang === 'cs' ? 'CZ / EN' : 'EN / CZ';
   });
+  if (typeof window.refreshExperienceLanguage === 'function') {
+    window.refreshExperienceLanguage(lang);
+  }
 }
 function toggleLanguage() {
   const current = localStorage.getItem('ptp_lang') || 'en';
@@ -161,7 +164,7 @@ if (!reduceMotion) {
   function updateParallax() {
     const scrollY = window.scrollY;
 
-    if (heroMedia) {
+    if (heroMedia && !window.matchMedia('(max-width: 600px)').matches) {
       const heroImg = heroMedia.querySelector('img');
       const heroH = heroMedia.offsetHeight;
       if (scrollY < heroH * 1.2) {
@@ -209,3 +212,229 @@ if (!reduceMotion) {
     el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
   });
 }
+
+/* ---------- Experience journey ---------- */
+const EXPERIENCE_SCENES = [
+  {
+    id: 'prague',
+    accent: '#ffb088',
+    hero: 'assets/hummer-exterior.jpg',
+    gallery: ['assets/hummer-exterior.jpg', 'assets/gallery-1.jpg', 'assets/gallery-5.jpg']
+  },
+  {
+    id: 'wedding',
+    accent: '#f3d6ad',
+    hero: 'assets/gallery-1.jpg',
+    gallery: ['assets/gallery-1.jpg', 'assets/hummer-exterior.jpg', 'assets/gallery-3.jpg']
+  },
+  {
+    id: 'birthday',
+    accent: '#ff8b79',
+    hero: 'assets/hummer-interior.jpg',
+    gallery: ['assets/hummer-interior.jpg', 'assets/gallery-2.jpg', 'assets/gallery-4.jpg']
+  },
+  {
+    id: 'vip',
+    accent: '#8bc6ff',
+    hero: 'assets/hummer-exterior.jpg',
+    gallery: ['assets/hummer-exterior.jpg', 'assets/gallery-5.jpg', 'assets/gallery-1.jpg']
+  },
+  {
+    id: 'party',
+    accent: '#ff58b5',
+    hero: 'assets/gallery-2.jpg',
+    gallery: ['assets/gallery-2.jpg', 'assets/hummer-interior.jpg', 'assets/gallery-4.jpg']
+  }
+];
+
+const experienceJourney = document.getElementById('experienceJourney');
+const experienceStage = document.getElementById('experienceStage');
+const experienceVisuals = [...document.querySelectorAll('[data-experience-visual]')];
+const experienceNavButtons = [...document.querySelectorAll('[data-experience-jump]')];
+const experienceMood = document.getElementById('experienceMood');
+const experienceTitle = document.getElementById('experienceTitle');
+const experienceDescription = document.getElementById('experienceDescription');
+const experienceProgress = document.getElementById('experienceProgress');
+const experienceOpenButton = document.getElementById('experienceOpen');
+const experienceContent = document.querySelector('.experience-content');
+
+const experienceModal = document.getElementById('experienceModal');
+const experienceModalHero = document.getElementById('experienceModalHero');
+const experienceModalStrip = document.getElementById('experienceModalStrip');
+const experienceModalMood = document.getElementById('experienceModalMood');
+const experienceModalTitle = document.getElementById('experienceModalTitle');
+const experienceModalLead = document.getElementById('experienceModalLead');
+const experienceModalFacts = document.getElementById('experienceModalFacts');
+
+let activeExperienceIndex = 0;
+let openExperienceId = null;
+let experienceLastFocus = null;
+let experienceScrollTicking = false;
+
+function experienceDictionary() {
+  const lang = localStorage.getItem('ptp_lang') || 'en';
+  return (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : TRANSLATIONS.en;
+}
+
+function experienceText(sceneId, field) {
+  const dict = experienceDictionary();
+  return dict[`exp_${sceneId}_${field}`] || '';
+}
+
+function animateExperienceCopy() {
+  if (!experienceContent || reduceMotion || typeof experienceContent.animate !== 'function') return;
+  experienceContent.animate(
+    [
+      { opacity: 0.22, transform: 'translateY(14px)' },
+      { opacity: 1, transform: 'translateY(0)' }
+    ],
+    { duration: 470, easing: 'cubic-bezier(.16,.8,.3,1)' }
+  );
+}
+
+function renderExperienceScene(index, animate = true) {
+  if (!experienceStage || !EXPERIENCE_SCENES[index]) return;
+  const scene = EXPERIENCE_SCENES[index];
+  const changed = index !== activeExperienceIndex;
+  activeExperienceIndex = index;
+
+  experienceStage.dataset.activeScene = String(index);
+  experienceStage.style.setProperty('--scene-accent', scene.accent);
+
+  experienceVisuals.forEach((visual, visualIndex) => {
+    visual.classList.toggle('is-active', visualIndex === index);
+  });
+
+  experienceNavButtons.forEach((button, buttonIndex) => {
+    const isActive = buttonIndex === index;
+    button.classList.toggle('is-active', isActive);
+    button.setAttribute('aria-selected', String(isActive));
+    button.tabIndex = isActive ? 0 : -1;
+  });
+
+  if (experienceMood) experienceMood.textContent = experienceText(scene.id, 'mood');
+  if (experienceTitle) experienceTitle.textContent = experienceText(scene.id, 'title');
+  if (experienceDescription) experienceDescription.textContent = experienceText(scene.id, 'text');
+  if (experienceProgress) experienceProgress.textContent = `${String(index + 1).padStart(2, '0')} / ${String(EXPERIENCE_SCENES.length).padStart(2, '0')}`;
+  if (experienceOpenButton) experienceOpenButton.dataset.experienceOpen = scene.id;
+
+  if (animate && changed) animateExperienceCopy();
+}
+
+function experienceIndexFromScroll() {
+  if (!experienceJourney) return 0;
+  const rect = experienceJourney.getBoundingClientRect();
+  const scrollable = Math.max(1, experienceJourney.offsetHeight - window.innerHeight);
+  const progress = Math.min(1, Math.max(0, -rect.top / scrollable));
+  return Math.min(
+    EXPERIENCE_SCENES.length - 1,
+    Math.max(0, Math.round(progress * (EXPERIENCE_SCENES.length - 1)))
+  );
+}
+
+function updateExperienceFromScroll() {
+  renderExperienceScene(experienceIndexFromScroll());
+  experienceScrollTicking = false;
+}
+
+function scrollToExperience(index) {
+  if (!experienceJourney || !EXPERIENCE_SCENES[index]) return;
+  const sectionTop = window.scrollY + experienceJourney.getBoundingClientRect().top;
+  const scrollable = Math.max(1, experienceJourney.offsetHeight - window.innerHeight);
+  const ratio = index / Math.max(1, EXPERIENCE_SCENES.length - 1);
+  window.scrollTo({ top: sectionTop + scrollable * ratio, behavior: reduceMotion ? 'auto' : 'smooth' });
+}
+
+experienceNavButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    scrollToExperience(Number(button.dataset.experienceJump));
+  });
+});
+
+if (experienceJourney) {
+  window.addEventListener('scroll', () => {
+    if (!experienceScrollTicking) {
+      requestAnimationFrame(updateExperienceFromScroll);
+      experienceScrollTicking = true;
+    }
+  }, { passive: true });
+  window.addEventListener('resize', updateExperienceFromScroll);
+}
+
+function fillExperienceModal(scene) {
+  if (!scene || !experienceModal) return;
+  openExperienceId = scene.id;
+  if (experienceModalHero) {
+    experienceModalHero.src = scene.hero;
+    experienceModalHero.alt = experienceText(scene.id, 'modal_title');
+  }
+  if (experienceModalMood) experienceModalMood.textContent = experienceText(scene.id, 'mood');
+  if (experienceModalTitle) experienceModalTitle.textContent = experienceText(scene.id, 'modal_title');
+  if (experienceModalLead) experienceModalLead.textContent = experienceText(scene.id, 'modal_lead');
+  if (experienceModalFacts) {
+    experienceModalFacts.innerHTML = [1, 2, 3]
+      .map(number => `<li>${experienceText(scene.id, `fact${number}`)}</li>`)
+      .join('');
+  }
+  if (experienceModalStrip) {
+    experienceModalStrip.innerHTML = '';
+    scene.gallery.forEach((src, imageIndex) => {
+      const thumb = document.createElement('button');
+      thumb.type = 'button';
+      thumb.className = `experience-dialog-thumb${imageIndex === 0 ? ' is-active' : ''}`;
+      thumb.setAttribute('aria-label', `Show image ${imageIndex + 1}`);
+      thumb.innerHTML = `<img src="${src}" alt="">`;
+      thumb.addEventListener('click', () => {
+        experienceModalHero.src = src;
+        experienceModalStrip.querySelectorAll('.experience-dialog-thumb').forEach(el => el.classList.remove('is-active'));
+        thumb.classList.add('is-active');
+      });
+      experienceModalStrip.appendChild(thumb);
+    });
+  }
+}
+
+function openExperienceModal(sceneId) {
+  const scene = EXPERIENCE_SCENES.find(item => item.id === sceneId);
+  if (!scene || !experienceModal) return;
+  experienceLastFocus = document.activeElement;
+  fillExperienceModal(scene);
+  experienceModal.classList.add('is-open');
+  experienceModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  experienceModal.querySelector('.experience-dialog-close')?.focus();
+}
+
+function closeExperienceModal() {
+  if (!experienceModal) return;
+  experienceModal.classList.remove('is-open');
+  experienceModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  openExperienceId = null;
+  if (experienceLastFocus instanceof HTMLElement) experienceLastFocus.focus();
+}
+
+experienceOpenButton?.addEventListener('click', () => {
+  openExperienceModal(experienceOpenButton.dataset.experienceOpen);
+});
+
+document.querySelectorAll('[data-experience-close]').forEach(element => {
+  element.addEventListener('click', closeExperienceModal);
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && experienceModal?.classList.contains('is-open')) {
+    closeExperienceModal();
+  }
+});
+
+window.refreshExperienceLanguage = function refreshExperienceLanguage() {
+  renderExperienceScene(activeExperienceIndex, false);
+  if (openExperienceId) {
+    const openScene = EXPERIENCE_SCENES.find(scene => scene.id === openExperienceId);
+    if (openScene) fillExperienceModal(openScene);
+  }
+};
+
+renderExperienceScene(0, false);
+updateExperienceFromScroll();
