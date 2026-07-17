@@ -35,6 +35,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,900;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/hummer-exterior.jpg" fetchpriority="high">
 <link rel="stylesheet" href="assets/style.css">
 
 <!-- Structured data -->
@@ -93,33 +94,34 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero hero-v5">
   <div class="hero-media" id="heroMedia">
-    <img src="assets/hummer-exterior.jpg" alt="White Hummer H2 limousine at dusk">
+    <img src="assets/hummer-exterior.jpg" alt="White Hummer H2 limousine at dusk" width="1250" height="815" fetchpriority="high" decoding="async">
     <div class="hero-clouds"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
   </div>
   <div class="hero-frame">
-    <p class="hero-eyebrow reveal" data-i18n="hero_eyebrow">Prague &amp; Central Bohemia · Private chauffeur</p>
-    <h1 class="hero-title reveal" style="transition-delay:.08s" data-i18n-html="hero_title">The street stopped.<br>Then it saw the <em>Hummer.</em></h1>
-    <div class="hero-foot">
-      <p class="hero-sub reveal" style="transition-delay:.16s" data-i18n="hero_sub">Thirteen guests inside, mini-bar cold, sound system loud — one stag night that started the second the doors opened. That's the ride we build for every crossing of Prague, every route into Bohemia: not a rental, an entrance.</p>
-      <div class="hero-actions reveal" style="transition-delay:.24s">
-        <a href="#booking" class="btn btn-primary magnetic" data-i18n="hero_cta1">Reserve your route</a>
-        <a href="#experiences" class="btn btn-line magnetic" data-i18n="hero_cta2">Explore the experiences</a>
+    <div class="hero-prologue reveal">
+      <span class="hero-prologue-line"></span>
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">Prague · Private experience · Up to 13 guests</p>
+    </div>
+    <div class="hero-main">
+      <h1 class="hero-title reveal" style="transition-delay:.08s" data-i18n-html="hero_title">Your night needs<br><em>an opening scene.</em></h1>
+      <p class="hero-sub reveal" style="transition-delay:.16s" data-i18n="hero_sub">A private Hummer, Prague after dusk and everyone together from the first minute. Not transport. The moment the night begins.</p>
+    </div>
+    <div class="hero-foot reveal" style="transition-delay:.24s">
+      <div class="hero-actions">
+        <a href="#experiences" class="btn btn-primary magnetic" data-i18n="hero_cta1">Choose your experience</a>
+        <a href="#booking" class="btn btn-line magnetic" data-i18n="hero_cta2">Reserve the night</a>
+      </div>
+      <div class="hero-signals" aria-label="Experience facts">
+        <div><strong>13</strong><span data-i18n="trust1">guests together</span></div>
+        <div><strong>9 m</strong><span data-i18n="trust2">white Hummer H2</span></div>
+        <div><strong>PRG</strong><span data-i18n="trust3">your city, your scene</span></div>
       </div>
     </div>
+    <a class="hero-scroll" href="#experiences" aria-label="Scroll to experiences"><span></span><b data-i18n="hero_scroll">The story continues</b></a>
   </div>
-</section>
-
-<!-- TRUST BAR -->
-<section class="trust reveal">
-  <div class="trust-item"><strong data-count="13">0</strong><span data-i18n="trust1">guests on board</span></div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><strong data-count="9" data-suffix=" m">0</strong><span data-i18n="trust2">stretched Hummer H2</span></div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><strong>PRG</strong><span data-i18n="trust3">the city becomes your stage</span></div>
-  <div class="trust-sep"></div>
-  <div class="trust-item"><strong>Yours</strong><span data-i18n="trust4">the night is built around you</span></div>
 </section>
 
 <!-- EXPERIENCE JOURNEY -->
@@ -140,23 +142,23 @@
     <div class="experience-stage" id="experienceStage" data-active-scene="0">
       <div class="experience-visuals" aria-hidden="true">
         <figure class="experience-visual is-active" data-experience-visual="0" data-tone="prague">
-          <img src="assets/experiences/prague-main.webp" alt="" decoding="async">
+          <img src="assets/experiences/prague-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" fetchpriority="low">
           <span class="experience-light"></span>
         </figure>
         <figure class="experience-visual" data-experience-visual="1" data-tone="wedding">
-          <img src="assets/experiences/wedding-main.webp" alt="" decoding="async">
+          <img src="assets/experiences/wedding-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" fetchpriority="low">
           <span class="experience-light"></span>
         </figure>
         <figure class="experience-visual" data-experience-visual="2" data-tone="birthday">
-          <img src="assets/experiences/birthday-main.webp" alt="" decoding="async">
+          <img src="assets/experiences/birthday-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" fetchpriority="low">
           <span class="experience-light"></span>
         </figure>
         <figure class="experience-visual" data-experience-visual="3" data-tone="vip">
-          <img src="assets/experiences/vip-main.webp" alt="" decoding="async">
+          <img src="assets/experiences/vip-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" fetchpriority="low">
           <span class="experience-light"></span>
         </figure>
         <figure class="experience-visual" data-experience-visual="4" data-tone="party">
-          <img src="assets/experiences/party-main.webp" alt="" decoding="async">
+          <img src="assets/experiences/party-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async" fetchpriority="low">
           <span class="experience-light"></span>
         </figure>
       </div>
@@ -214,7 +216,7 @@
   <div class="experience-dialog" role="dialog" aria-modal="true" aria-labelledby="experienceModalTitle">
     <button class="experience-dialog-close" type="button" data-experience-close aria-label="Close">×</button>
     <div class="experience-dialog-media">
-      <img id="experienceModalHero" src="assets/experiences/prague-main.webp" alt="">
+      <img id="experienceModalHero" src="assets/experiences/prague-main.webp" alt="" width="1672" height="941" loading="lazy" decoding="async">
       <div class="experience-dialog-strip" id="experienceModalStrip"></div>
     </div>
     <div class="experience-dialog-copy">

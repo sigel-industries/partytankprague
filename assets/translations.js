@@ -2,12 +2,13 @@ const TRANSLATIONS = {
   en: {
     nav_routes: "Experiences", nav_car: "The Tank", nav_process: "How it works", nav_gallery: "Gallery", nav_pricing: "Pricing", nav_faq: "FAQ", nav_reserve: "Reserve",
 
-    hero_eyebrow: "Prague & Central Bohemia · Private chauffeur",
-    hero_title: "The street stopped.<br>Then it saw the <em>Hummer.</em>",
-    hero_sub: "Thirteen guests inside, mini-bar cold, sound system loud — the experience starts the second the doors open. Prague is not just the route. It is the stage.",
-    hero_cta1: "Reserve your experience", hero_cta2: "Explore the experiences",
+    hero_eyebrow: "Prague · Private experience · Up to 13 guests",
+    hero_title: "Your night needs<br><em>an opening scene.</em>",
+    hero_sub: "A private Hummer, Prague after dusk and everyone together from the first minute. Not transport. The moment the night begins.",
+    hero_cta1: "Choose your experience", hero_cta2: "Reserve the night",
+    hero_scroll: "The story continues",
 
-    trust1: "guests on board", trust2: "stretched Hummer H2", trust3: "the city becomes your stage", trust4: "the night is built around you",
+    trust1: "guests together", trust2: "white Hummer H2", trust3: "your city, your scene", trust4: "the night is built around you",
 
     exp_eyebrow: "Choose your experience",
     exp_h2: "Prague is the backdrop.<br><em>You choose the mood.</em>",
@@ -169,12 +170,13 @@ const TRANSLATIONS = {
   cs: {
     nav_routes: "Zážitky", nav_car: "Party Tank", nav_process: "Jak to funguje", nav_gallery: "Galerie", nav_pricing: "Ceník", nav_faq: "FAQ", nav_reserve: "Rezervovat",
 
-    hero_eyebrow: "Praha a Střední Čechy · Soukromý šofér",
-    hero_title: "Ulice ztichla.<br>Pak uviděla <em>Hummer.</em>",
-    hero_sub: "Třináct lidí uvnitř, minibar vychlazený, hudba nahlas — zážitek začíná ve chvíli, kdy se otevřou dveře. Praha není jen trasa. Je to scéna.",
-    hero_cta1: "Rezervovat zážitek", hero_cta2: "Prozkoumat zážitky",
+    hero_eyebrow: "Praha · Soukromý zážitek · Až 13 hostů",
+    hero_title: "Vaše noc potřebuje<br><em>úvodní scénu.</em>",
+    hero_sub: "Soukromý Hummer, Praha po setmění a všichni spolu od první minuty. Ne doprava. Okamžik, kdy začíná noc.",
+    hero_cta1: "Vybrat zážitek", hero_cta2: "Rezervovat noc",
+    hero_scroll: "Příběh pokračuje",
 
-    trust1: "hostů na palubě", trust2: "dlouhý Hummer H2", trust3: "město se stává vaší scénou", trust4: "noc postavíme kolem vás",
+    trust1: "hostů pohromadě", trust2: "bílý Hummer H2", trust3: "vaše město, vaše scéna", trust4: "noc postavíme kolem vás",
 
     exp_eyebrow: "Vyberte si zážitek",
     exp_h2: "Praha je kulisa.<br><em>Vy určujete náladu.</em>",
