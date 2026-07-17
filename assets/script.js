@@ -161,7 +161,7 @@ if (!reduceMotion) {
   function updateParallax() {
     const scrollY = window.scrollY;
 
-    if (heroMedia) {
+    if (heroMedia && !window.matchMedia('(max-width: 600px)').matches) {
       const heroImg = heroMedia.querySelector('img');
       const heroH = heroMedia.offsetHeight;
       if (scrollY < heroH * 1.2) {
