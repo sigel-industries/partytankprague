@@ -80,7 +80,7 @@
     <a href="#faq" data-i18n="nav_faq">FAQ</a>
   </nav>
   <button class="lang-switch" id="langSwitch" aria-label="Switch language">EN / CZ</button>
-  <a class="nav-cta" href="#booking" data-i18n="nav_reserve">Reserve</a>
+  <a class="nav-cta" href="#booking" data-i18n="nav_reserve" data-booking-open>Reserve</a>
   <button class="nav-burger" id="burger" aria-label="Menu"><span></span><span></span></button>
 </header>
 
@@ -90,7 +90,7 @@
   <a href="#process" data-i18n="nav_process">How it works</a>
   <a href="#faq" data-i18n="nav_faq">FAQ</a>
   <button class="lang-switch lang-switch-mobile" id="langSwitchMobile" aria-label="Switch language">EN / CZ</button>
-  <a href="#booking" class="mobile-cta" data-i18n="nav_reserve">Reserve</a>
+  <a href="#booking" class="mobile-cta" data-i18n="nav_reserve" data-booking-open>Reserve</a>
 </div>
 
 <!-- HERO -->
@@ -112,7 +112,7 @@
     <div class="hero-foot reveal" style="transition-delay:.24s">
       <div class="hero-actions">
         <a href="#experiences" class="btn btn-primary magnetic" data-i18n="hero_cta1">Choose your experience</a>
-        <a href="#booking" class="btn btn-line magnetic" data-i18n="hero_cta2">Reserve the night</a>
+        <a href="#booking" class="btn btn-line magnetic" data-i18n="hero_cta2" data-booking-open>Reserve the night</a>
       </div>
       <div class="hero-signals" aria-label="Experience facts">
         <div><strong>13</strong><span data-i18n="trust1">guests together</span></div>
@@ -224,7 +224,7 @@
       <h3 id="experienceModalTitle"></h3>
       <p class="experience-dialog-lead" id="experienceModalLead"></p>
       <ul class="experience-dialog-facts" id="experienceModalFacts"></ul>
-      <a href="#booking" class="btn btn-primary" data-experience-close data-i18n="exp_modal_cta">Build this experience</a>
+      <a href="#booking" class="btn btn-primary" data-experience-close data-i18n="exp_modal_cta" data-booking-open>Build this experience</a>
     </div>
   </div>
 </div>
@@ -303,7 +303,7 @@
         </button>
       </div>
 
-      <a href="#booking" class="btn btn-primary magnetic tank-cta" data-i18n="veh_cta">Check your date</a>
+      <a href="#booking" class="btn btn-primary magnetic tank-cta" data-i18n="veh_cta" data-booking-open>Check your date</a>
     </div>
   </div>
 
@@ -365,122 +365,177 @@
 
   <div class="personalize-foot reveal">
     <p data-i18n="pers_note">Not every option is listed here. Tell us the occasion and we will confirm what can be prepared.</p>
-    <a href="#booking" class="route-link" data-i18n="pers_cta">Tell us the idea →</a>
+    <a href="#booking" class="route-link" data-i18n="pers_cta" data-booking-open>Tell us the idea →</a>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section class="process" id="process">
-  <div class="section-head reveal">
-    <p class="eyebrow" data-i18n="proc_eyebrow">How it works</p>
-    <h2 data-i18n="proc_h2">Four steps, no surprises.</h2>
+<section class="process process-v7" id="process">
+  <div class="process-v7-head reveal">
+    <div>
+      <p class="eyebrow" data-i18n="proc_eyebrow">How it works</p>
+      <h2 data-i18n-html="proc_h2">From idea to arrival.<br><em>Three clear steps.</em></h2>
+    </div>
+    <p class="process-v7-intro" data-i18n="proc_intro">Send the essentials. We confirm the details. The Hummer arrives prepared for your occasion.</p>
   </div>
-  <div class="process-list">
-    <div class="process-row reveal">
-      <span class="process-n">01</span>
-      <div><h3 data-i18n="proc1h">Tell us the date</h3><p data-i18n="proc1p">Occasion, group size, rough idea of the route — Prague, Bohemia, or both.</p></div>
-    </div>
-    <div class="process-row reveal" style="transition-delay:.06s">
-      <span class="process-n">02</span>
-      <div><h3 data-i18n="proc2h">We route it</h3><p data-i18n="proc2p">Pickup point, stops, timing and music sorted around your event, confirmed by message.</p></div>
-    </div>
-    <div class="process-row reveal" style="transition-delay:.12s">
-      <span class="process-n">03</span>
-      <div><h3 data-i18n="proc3h">You ride</h3><p data-i18n="proc3p">We arrive on time, drinks cold, and drive the route exactly as planned.</p></div>
-    </div>
-    <div class="process-row reveal" style="transition-delay:.18s">
-      <span class="process-n">04</span>
-      <div><h3 data-i18n="proc4h">You arrive</h3><p data-i18n="proc4p">On schedule, in a 9-metre white Hummer, with a story for the rest of the night.</p></div>
-    </div>
+  <div class="process-v7-grid">
+    <article class="process-v7-card reveal">
+      <span class="process-v7-number">01</span>
+      <div><h3 data-i18n="proc1h">Tell us the occasion</h3><p data-i18n="proc1p">Date, time, group size and a rough idea of what you are planning.</p></div>
+    </article>
+    <article class="process-v7-card reveal" style="transition-delay:.06s">
+      <span class="process-v7-number">02</span>
+      <div><h3 data-i18n="proc2h">We shape the ride</h3><p data-i18n="proc2p">Pickup, duration, route and requested details are agreed directly with you.</p></div>
+    </article>
+    <article class="process-v7-card reveal" style="transition-delay:.12s">
+      <span class="process-v7-number">03</span>
+      <div><h3 data-i18n="proc3h">The Hummer arrives</h3><p data-i18n="proc3p">At the confirmed time, prepared for the people and occasion you described.</p></div>
+    </article>
   </div>
 </section>
 
-<!-- SOCIAL PROOF -->
-<section class="proof">
-  <div class="proof-track reveal">
-    <blockquote><p data-i18n="proof1">"Picked us up right on time, the whole street stopped to look. Best entrance any of us has ever had."</p><cite data-i18n="proof1c">— Stag party, Prague</cite></blockquote>
-    <blockquote><p data-i18n="proof2">"We did the Bohemian route for the wedding photos at Karlštejn. Worth every crown."</p><cite data-i18n="proof2c">— Wedding party, Central Bohemia</cite></blockquote>
-    <blockquote><p data-i18n="proof3">"Mini-bar was stocked, music was ours, driver knew exactly where to stop for photos."</p><cite data-i18n="proof3c">— Birthday group, Prague</cite></blockquote>
-  </div>
-  <p class="proof-note" data-i18n="proof_note">Placeholder quotes — swap for real reviews once you have them.</p>
+<!-- TRUST FACTS -->
+<section class="trust-v7" aria-label="Service facts">
+  <div class="trust-v7-item reveal"><strong>13</strong><span data-i18n="trust_v7_1">guests together</span></div>
+  <div class="trust-v7-item reveal" style="transition-delay:.04s"><strong>9 m</strong><span data-i18n="trust_v7_2">white Hummer H2</span></div>
+  <div class="trust-v7-item reveal" style="transition-delay:.08s"><strong>PRG</strong><span data-i18n="trust_v7_3">Prague and agreed routes</span></div>
+  <div class="trust-v7-item reveal" style="transition-delay:.12s"><strong>1:1</strong><span data-i18n="trust_v7_4">details confirmed directly</span></div>
 </section>
 
 <!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="section-head reveal">
-    <p class="eyebrow" data-i18n="faq_eyebrow">FAQ</p>
-    <h2 data-i18n="faq_h2">Before you ask.</h2>
+<section class="faq faq-v7" id="faq">
+  <div class="faq-v7-head reveal">
+    <div>
+      <p class="eyebrow" data-i18n="faq_eyebrow">FAQ</p>
+      <h2 data-i18n="faq_h2">Before you ask.</h2>
+    </div>
+    <p data-i18n="faq_intro">The practical things people usually need before sending a request.</p>
   </div>
-  <div class="faq-list reveal">
+  <div class="faq-list faq-v7-list reveal">
     <details>
       <summary data-i18n="faq1q">How many people fit inside?</summary>
       <p data-i18n="faq1a">Up to 13 guests in the wraparound lounge. Tell us your group size and we'll confirm comfort for the route.</p>
     </details>
     <details>
       <summary data-i18n="faq2q">Can the route leave Prague?</summary>
-      <p data-i18n="faq2a">Yes — the Bohemian Day route runs out toward Karlštejn and the vineyard roads beyond it. Tell us what you'd like to see.</p>
+      <p data-i18n="faq2a">Yes. Pickup, destination and route are agreed according to the occasion and timing.</p>
     </details>
     <details>
-      <summary data-i18n="faq3q">Can drinks be prepared for the ride?</summary>
-      <p data-i18n="faq3a">Yes. Drink options and any special requests are agreed before the date, so everything can be confirmed in advance.</p>
+      <summary data-i18n="faq3q">Can drinks or decorations be prepared?</summary>
+      <p data-i18n="faq3a">Possible options are agreed before the date. We confirm availability and price before anything is ordered.</p>
     </details>
     <details>
-      <summary data-i18n="faq4q">How far ahead should we book?</summary>
-      <p data-i18n="faq4a">Weekends and stag/hen season fill fast — 2–3 weeks out is safest, but ask about last-minute availability.</p>
+      <summary data-i18n="faq4q">How far ahead should we ask?</summary>
+      <p data-i18n="faq4a">Earlier is safer for weekends and popular dates, but last-minute availability is always worth checking.</p>
     </details>
     <details>
       <summary data-i18n="faq5q">Is the price per person or per ride?</summary>
-      <p data-i18n="faq5a">Per ride, not per person — split across 13 guests it's usually less than a fleet of taxis.</p>
+      <p data-i18n="faq5a">The service is priced per ride and duration, not per passenger. The final price is confirmed with the route and requested preparation.</p>
     </details>
   </div>
 </section>
 
 <!-- FINAL CTA -->
-<section class="final-cta reveal">
-  <h2 data-i18n-html="final_h2">The car is free most nights.<br><em>Yours doesn't have to wait.</em></h2>
-  <a href="#booking" class="btn btn-primary magnetic" data-i18n="final_cta">Reserve your route</a>
+<section class="final-cta final-cta-v7 reveal">
+  <div class="final-cta-v7-copy">
+    <p class="eyebrow" data-i18n="final_eyebrow">Your date. Your occasion.</p>
+    <h2 data-i18n-html="final_h2">One Hummer.<br><em>Built around the moment.</em></h2>
+    <p data-i18n="final_sub">Send the essentials and we will confirm availability, the route and what can be prepared.</p>
+  </div>
+  <button type="button" class="btn btn-primary magnetic" data-booking-open data-i18n="final_cta">Check availability</button>
 </section>
 
-<!-- BOOKING -->
-<section class="booking" id="booking">
-  <div class="section-head reveal">
-    <p class="eyebrow" data-i18n="book_eyebrow">Booking request</p>
-    <h2 data-i18n-html="book_h2">Tell us the date.<br>We'll route the night.</h2>
-    <p class="section-sub" data-i18n="book_sub">This is a request, not a charge — we confirm availability and price before anything is locked in.</p>
+<!-- BOOKING MODAL -->
+<div class="booking-modal" id="booking" aria-hidden="true">
+  <div class="booking-modal-backdrop" data-booking-close></div>
+  <div class="booking-modal-panel" role="dialog" aria-modal="true" aria-labelledby="bookingTitle">
+    <button class="booking-modal-close" type="button" data-booking-close aria-label="Close">×</button>
+    <div class="booking-modal-top">
+      <div>
+        <p class="eyebrow" data-i18n="book_eyebrow">Reservation request</p>
+        <h2 id="bookingTitle" data-i18n="book_h2">Tell us the essentials.</h2>
+      </div>
+      <span class="booking-progress"><b data-booking-step-current>1</b> / 4</span>
+    </div>
+    <p class="booking-modal-sub" data-i18n="book_sub">This sends a request, not a confirmed booking. Availability and price are confirmed directly.</p>
+
+    <form class="booking-wizard" id="bookingWizard">
+      <section class="booking-step is-active" data-booking-step="1">
+        <h3 data-i18n="book_step1">When and what for?</h3>
+        <div class="form-row">
+          <label><span data-i18n="book_date">Date</span><input type="date" name="date" required></label>
+          <label><span data-i18n="book_time">Preferred time</span><input type="time" name="time"></label>
+        </div>
+        <div class="form-row">
+          <label><span data-i18n="book_occasion">Occasion</span>
+            <select name="occasion" required>
+              <option value="" data-i18n="book_occasion_choose">Choose an occasion</option>
+              <option value="wedding" data-i18n="book_occ_wedding">Wedding</option>
+              <option value="birthday" data-i18n="book_occ_birthday">Birthday</option>
+              <option value="prague" data-i18n="book_occ_prague">Prague experience</option>
+              <option value="bachelor" data-i18n="book_occ_bachelor">Bachelor / bachelorette</option>
+              <option value="vip" data-i18n="book_occ_vip">VIP / transfer</option>
+              <option value="company" data-i18n="book_occ_company">Company event</option>
+              <option value="other" data-i18n="book_occ_other">Other</option>
+            </select>
+          </label>
+          <label><span data-i18n="book_guests">Guests</span><input type="number" name="guests" min="1" max="13" placeholder="1–13" required></label>
+        </div>
+      </section>
+
+      <section class="booking-step" data-booking-step="2">
+        <h3 data-i18n="book_step2">Where and for how long?</h3>
+        <label class="form-full"><span data-i18n="book_pickup">Pickup location</span><input type="text" name="pickup" placeholder="Prague, venue or address" required></label>
+        <label class="form-full"><span data-i18n="book_destination">Destination or route idea</span><input type="text" name="destination" placeholder="Destination, city route or not decided yet"></label>
+        <label class="form-full"><span data-i18n="book_duration">Approximate duration</span>
+          <select name="duration" required>
+            <option value="" data-i18n="book_duration_choose">Choose duration</option>
+            <option value="1h">1 hour</option><option value="2h">2 hours</option><option value="3h">3 hours</option>
+            <option value="custom" data-i18n="book_duration_custom">Longer / not sure</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="booking-step" data-booking-step="3">
+        <h3 data-i18n="book_step3">What should we discuss?</h3>
+        <p class="booking-step-note" data-i18n="book_step3_note">These are interests, not automatically ordered extras. We will confirm what is possible.</p>
+        <div class="booking-options">
+          <label><input type="checkbox" name="options" value="drinks"><span data-i18n="book_opt_drinks">Drinks</span></label>
+          <label><input type="checkbox" name="options" value="music"><span data-i18n="book_opt_music">Music / playlist</span></label>
+          <label><input type="checkbox" name="options" value="decorations"><span data-i18n="book_opt_decor">Decorations</span></label>
+          <label><input type="checkbox" name="options" value="photo-stops"><span data-i18n="book_opt_stops">Photo stops</span></label>
+          <label><input type="checkbox" name="options" value="red-carpet"><span data-i18n="book_opt_carpet">Red carpet</span></label>
+          <label><input type="checkbox" name="options" value="special"><span data-i18n="book_opt_special">Special request</span></label>
+        </div>
+        <label class="form-full"><span data-i18n="book_notes">Anything we should know?</span><textarea name="notes" rows="4" placeholder="A short description is enough."></textarea></label>
+      </section>
+
+      <section class="booking-step" data-booking-step="4">
+        <h3 data-i18n="book_step4">Where should we reply?</h3>
+        <div class="form-row">
+          <label><span data-i18n="book_name">Name</span><input type="text" name="name" required></label>
+          <label><span data-i18n="book_email">Email</span><input type="email" name="email" required></label>
+        </div>
+        <label class="form-full"><span data-i18n="book_phone">Phone / WhatsApp</span><input type="tel" name="phone" placeholder="+420 ..."></label>
+        <div class="booking-summary" data-booking-summary></div>
+        <p class="booking-legal" data-i18n="book_note">Sending this request does not reserve the date. We will reply with availability and the next steps.</p>
+      </section>
+
+      <div class="booking-actions">
+        <button type="button" class="booking-back" data-booking-back data-i18n="book_back">Back</button>
+        <button type="button" class="btn btn-primary" data-booking-next data-i18n="book_next">Continue</button>
+        <button type="submit" class="btn btn-primary" data-booking-submit data-i18n="book_submit">Send request</button>
+      </div>
+    </form>
+
+    <div class="booking-success" data-booking-success hidden>
+      <p class="eyebrow" data-i18n="book_success_eye">Request prepared</p>
+      <h3 data-i18n="book_success_h">Your email app will open.</h3>
+      <p data-i18n="book_success_p">Send the prepared message to complete the request. The date is confirmed only after a direct reply.</p>
+      <button class="btn btn-primary" type="button" data-booking-close data-i18n="book_close">Close</button>
+    </div>
   </div>
-  <!--
-    FORMSPREE SETUP:
-    1. Create a free account at https://formspree.io and create a new form.
-    2. Copy your form endpoint (looks like https://formspree.io/f/abcdwxyz).
-    3. Replace YOUR_FORM_ID below with that ID.
-    Until replaced, the form runs in local demo mode only (script.js detects the placeholder).
-  -->
-  <form class="booking-form reveal" id="bookingForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <div class="form-row">
-      <label data-i18n="book_name">Name<input type="text" name="name" required placeholder="Your name"></label>
-      <label data-i18n="book_email">Email<input type="email" name="email" required placeholder="you@email.com"></label>
-    </div>
-    <div class="form-row">
-      <label data-i18n="book_phone">Phone / WhatsApp<input type="tel" name="phone" placeholder="+420 ..."></label>
-      <label data-i18n="book_date">Date<input type="date" name="date" required></label>
-    </div>
-    <div class="form-row">
-      <label data-i18n="book_route">Route
-        <select name="route">
-          <option value="" data-i18n="book_route_choose">Choose a route</option>
-          <option data-i18n="book_route_1">Prague After Dark</option>
-          <option data-i18n="book_route_2">Bohemian Day</option>
-          <option data-i18n="book_route_3">Airport &amp; VIP Transfer</option>
-          <option data-i18n="book_route_4">Your Occasion (custom)</option>
-        </select>
-      </label>
-      <label data-i18n="book_guests">Guests<input type="number" name="guests" min="1" max="13" placeholder="Up to 13"></label>
-    </div>
-    <label class="form-full" data-i18n="book_notes">Tell us about the night<textarea name="notes" rows="4" placeholder="Pickup location, route ideas, occasion details..."></textarea></label>
-    <button type="submit" class="btn btn-primary btn-wide magnetic" data-i18n="book_submit">Send booking request</button>
-    <p class="form-note" id="formNote" data-i18n="book_note">Demo mode — connect this form to Formspree (see code comment above) to receive real requests.</p>
-  </form>
-</section>
+</div>
 
 <footer class="footer">
   <div class="footer-top">
@@ -492,7 +547,7 @@
       <a href="#vehicle" data-i18n="nav_car">The Tank</a>
       <a href="#process" data-i18n="nav_process">How it works</a>
       <a href="#faq" data-i18n="nav_faq">FAQ</a>
-      <a href="#booking" data-i18n="nav_reserve">Booking</a>
+      <a href="#booking" data-i18n="nav_reserve" data-booking-open>Booking</a>
       <a href="privacy.html" data-i18n="footer_privacy">Privacy &amp; Cookies</a>
     </div>
     <div class="footer-contact">
@@ -506,7 +561,7 @@
   </div>
 </footer>
 
-<a href="#booking" class="sticky-cta" data-i18n="hero_cta1">Reserve your route</a>
+<a href="#booking" class="sticky-cta" data-i18n="hero_cta1" data-booking-open>Reserve your route</a>
 
 <div class="cookie-banner" id="cookieBanner">
   <p data-i18n="cookie_text">We don't use tracking or advertising cookies. This site loads Google Fonts and (if connected) Formspree to handle bookings — both may process basic technical data under their own privacy policies.</p>
@@ -518,6 +573,94 @@
 
 <script src="assets/translations.js"></script>
 <script src="assets/script.js"></script>
+
+<script>
+(() => {
+  const modal = document.getElementById('booking');
+  const form = document.getElementById('bookingWizard');
+  if (!modal || !form) return;
+  const steps = [...form.querySelectorAll('[data-booking-step]')];
+  const next = form.querySelector('[data-booking-next]');
+  const back = form.querySelector('[data-booking-back]');
+  const submit = form.querySelector('[data-booking-submit]');
+  const current = modal.querySelector('[data-booking-step-current]');
+  const summary = form.querySelector('[data-booking-summary]');
+  const success = modal.querySelector('[data-booking-success]');
+  let index = 0;
+  let lastFocus = null;
+
+  const showStep = (nextIndex) => {
+    index = Math.max(0, Math.min(steps.length - 1, nextIndex));
+    steps.forEach((step, i) => step.classList.toggle('is-active', i === index));
+    current.textContent = String(index + 1);
+    back.hidden = index === 0;
+    next.hidden = index === steps.length - 1;
+    submit.hidden = index !== steps.length - 1;
+    if (index === steps.length - 1) buildSummary();
+    modal.querySelector('.booking-modal-panel').scrollTop = 0;
+  };
+  const open = () => {
+    lastFocus = document.activeElement;
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('booking-open');
+    success.hidden = true;
+    form.hidden = false;
+    showStep(0);
+    setTimeout(() => modal.querySelector('.booking-modal-close').focus(), 40);
+  };
+  const close = () => {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('booking-open');
+    if (lastFocus) lastFocus.focus();
+  };
+  const validateStep = () => {
+    const fields = [...steps[index].querySelectorAll('input, select, textarea')];
+    for (const field of fields) {
+      if (!field.checkValidity()) { field.reportValidity(); return false; }
+    }
+    return true;
+  };
+  const buildSummary = () => {
+    const data = new FormData(form);
+    const parts = [data.get('date'), data.get('time'), data.get('occasion'), data.get('guests') ? `${data.get('guests')} guests` : ''].filter(Boolean);
+    summary.textContent = parts.join(' · ');
+  };
+  document.querySelectorAll('[data-booking-open]').forEach(el => el.addEventListener('click', e => { e.preventDefault(); open(); }));
+  modal.querySelectorAll('[data-booking-close]').forEach(el => el.addEventListener('click', close));
+  next.addEventListener('click', () => { if (validateStep()) showStep(index + 1); });
+  back.addEventListener('click', () => showStep(index - 1));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('is-open')) close(); });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!validateStep()) return;
+    const data = new FormData(form);
+    const options = data.getAll('options').join(', ') || 'None selected';
+    const subject = `Party Tank reservation request — ${data.get('date') || 'date TBC'}`;
+    const body = [
+      `Name: ${data.get('name') || ''}`,
+      `Email: ${data.get('email') || ''}`,
+      `Phone / WhatsApp: ${data.get('phone') || ''}`,
+      '',
+      `Date: ${data.get('date') || ''}`,
+      `Preferred time: ${data.get('time') || ''}`,
+      `Occasion: ${data.get('occasion') || ''}`,
+      `Guests: ${data.get('guests') || ''}`,
+      `Pickup: ${data.get('pickup') || ''}`,
+      `Destination / route: ${data.get('destination') || ''}`,
+      `Duration: ${data.get('duration') || ''}`,
+      `Interested in: ${options}`,
+      '',
+      `Notes: ${data.get('notes') || ''}`
+    ].join('\n');
+    window.location.href = `mailto:info@partytankprague.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    form.hidden = true;
+    success.hidden = false;
+  });
+  showStep(0);
+})();
+</script>
 
 <script>
 (() => {
