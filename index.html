@@ -229,6 +229,27 @@
   </div>
 </div>
 
+
+<!-- QUIET CINEMATIC BRIDGE -->
+<section class="ride-moment" id="rideMoment" aria-labelledby="rideMomentTitle">
+  <div class="ride-moment-shell reveal">
+    <div class="ride-moment-media">
+      <video class="ride-moment-video" data-cinemagraph muted loop playsinline preload="none" poster="assets/cinemagraph/ride-prague-poster.webp" aria-hidden="true">
+        <source data-src="assets/cinemagraph/ride-prague.webm" type="video/webm">
+        <source data-src="assets/cinemagraph/ride-prague.mp4" type="video/mp4">
+      </video>
+      <div class="ride-moment-shade" aria-hidden="true"></div>
+      <div class="ride-moment-glass" aria-hidden="true"></div>
+    </div>
+    <div class="ride-moment-copy">
+      <p class="eyebrow" data-i18n="ride_eyebrow">The feeling between the stops</p>
+      <h2 id="rideMomentTitle" data-i18n-html="ride_h2">Prague keeps moving.<br><em>You stay in the moment.</em></h2>
+      <p data-i18n="ride_text">A quiet second inside the Hummer: the city outside, your people inside, and nowhere else you need to be yet.</p>
+    </div>
+    <p class="ride-moment-caption"><span aria-hidden="true"></span><b data-i18n="ride_caption">A moment inside the Tank</b></p>
+  </div>
+</section>
+
 <!-- THE TANK -->
 <section class="tank" id="vehicle">
   <div class="tank-heading">
@@ -270,7 +291,7 @@
         </button>
         <button class="tank-feature" type="button" data-tank-feature="1" aria-pressed="false">
           <span class="tank-feature-number">02</span>
-          <span class="tank-feature-copy"><b data-i18n="veh_f2h">The first venue is already moving.</b><small data-i18n="veh_f2p">Your playlist, the full cabin sound system and a cold minibar start the atmosphere before the first stop.</small></span>
+          <span class="tank-feature-copy"><b data-i18n="veh_f2h">The first venue is already moving.</b><small data-i18n="veh_f2p">Your playlist, the full cabin sound system and drinks prepared in advance can set the atmosphere before the first stop.</small></span>
         </button>
         <button class="tank-feature" type="button" data-tank-feature="2" aria-pressed="false">
           <span class="tank-feature-number">03</span>
@@ -289,8 +310,62 @@
   <div class="tank-summary reveal">
     <div><span data-i18n="veh_sum1_label">Capacity</span><strong data-i18n="veh_sum1_value">Up to 13 guests</strong></div>
     <div><span data-i18n="veh_sum2_label">Scale</span><strong data-i18n="veh_sum2_value">9-metre Hummer H2</strong></div>
-    <div><span data-i18n="veh_sum3_label">Inside</span><strong data-i18n="veh_sum3_value">Sound · minibar · lighting</strong></div>
-    <div><span data-i18n="veh_sum4_label">On request</span><strong data-i18n="veh_sum4_value">Fog · wedding decoration</strong></div>
+    <div><span data-i18n="veh_sum3_label">Inside</span><strong data-i18n="veh_sum3_value">Sound · lighting · privacy</strong></div>
+    <div><span data-i18n="veh_sum4_label">By agreement</span><strong data-i18n="veh_sum4_value">Drinks · decoration · special requests</strong></div>
+  </div>
+</section>
+
+
+<!-- PERSONALISATION FRAMEWORK -->
+<section class="personalize" id="personalize" aria-labelledby="personalizeTitle">
+  <div class="personalize-head">
+    <div class="personalize-title reveal">
+      <p class="eyebrow" data-i18n="pers_eyebrow">Shape the experience</p>
+      <h2 id="personalizeTitle" data-i18n-html="pers_h2">The Hummer is fixed.<br><em>The moment is not.</em></h2>
+    </div>
+    <p class="personalize-lead reveal" style="transition-delay:.08s" data-i18n="pers_lead">These are the parts we can prepare around your occasion. Exact options, availability and price are confirmed individually before the ride.</p>
+  </div>
+
+  <div class="personalize-grid" aria-label="Experience options">
+    <article class="personalize-card reveal" data-personalize="music">
+      <span class="personalize-number">01</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M19 34a6 6 0 1 1-4-5.65V14l22-5v20a6 6 0 1 1-4-5.65V16.5l-14 3.2V34Z"/></svg>
+      <h3 data-i18n="pers_music_h">Music</h3>
+      <p data-i18n="pers_music_p">Your soundtrack, a shared playlist or music prepared for the occasion.</p>
+    </article>
+
+    <article class="personalize-card reveal" data-personalize="drinks" style="transition-delay:.04s">
+      <span class="personalize-number">02</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M13 8h22l-3 13a8 8 0 0 1-7 6.1V38h8v3H15v-3h8V27.1A8 8 0 0 1 16 21L13 8Zm4 3 2.1 9.3a5 5 0 0 0 9.8 0L31 11H17Z"/></svg>
+      <h3 data-i18n="pers_drinks_h">Drinks</h3>
+      <p data-i18n="pers_drinks_p">Drink options can be prepared in advance once the final offer is agreed.</p>
+    </article>
+
+    <article class="personalize-card reveal" data-personalize="decorations" style="transition-delay:.08s">
+      <span class="personalize-number">03</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c7 0 12 5.4 12 12 0 5.1-3.5 9.4-8.4 11.1L29 35h-4v7h-2v-7h-4l1.4-5.9C15.5 27.4 12 23.1 12 18 12 11.4 17 6 24 6Zm0 3c-5.2 0-9 4-9 9 0 4.2 3.1 7.7 7.3 8.6l1.7.4 1.7-.4c4.2-.9 7.3-4.4 7.3-8.6 0-5-3.8-9-9-9Z"/></svg>
+      <h3 data-i18n="pers_decor_h">Decorations</h3>
+      <p data-i18n="pers_decor_p">Wedding, birthday or themed details can be arranged by agreement.</p>
+    </article>
+
+    <article class="personalize-card reveal" data-personalize="route" style="transition-delay:.12s">
+      <span class="personalize-number">04</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M15 7a8 8 0 0 1 8 8c0 5.8-8 14-8 14S7 20.8 7 15a8 8 0 0 1 8-8Zm0 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm19 10a7 7 0 0 1 7 7c0 5-7 12-7 12s-7-7-7-12a7 7 0 0 1 7-7Zm0 3.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7ZM18 36h8v3h-8v-3Z"/></svg>
+      <h3 data-i18n="pers_route_h">Route &amp; stops</h3>
+      <p data-i18n="pers_route_p">Pickup, destination and useful stops are planned around the event.</p>
+    </article>
+
+    <article class="personalize-card reveal" data-personalize="special" style="transition-delay:.16s">
+      <span class="personalize-number">05</span>
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="m24 5 4.6 11.1L40 17.5l-8.7 7.4L34 36l-10-5.8L14 36l2.7-11.1L8 17.5l11.4-1.4L24 5Zm0 7.8-2.5 6-6.2.8 4.7 4-1.5 6.1 5.5-3.2 5.5 3.2-1.5-6.1 4.7-4-6.2-.8-2.5-6Z"/></svg>
+      <h3 data-i18n="pers_special_h">Special requests</h3>
+      <p data-i18n="pers_special_p">Red carpet, flowers, a surprise or another idea. We confirm what can be arranged.</p>
+    </article>
+  </div>
+
+  <div class="personalize-foot reveal">
+    <p data-i18n="pers_note">Not every option is listed here. Tell us the occasion and we will confirm what can be prepared.</p>
+    <a href="#booking" class="route-link" data-i18n="pers_cta">Tell us the idea →</a>
   </div>
 </section>
 
@@ -346,8 +421,8 @@
       <p data-i18n="faq2a">Yes — the Bohemian Day route runs out toward Karlštejn and the vineyard roads beyond it. Tell us what you'd like to see.</p>
     </details>
     <details>
-      <summary data-i18n="faq3q">Can we bring our own drinks?</summary>
-      <p data-i18n="faq3a">The on-board mini-bar is yours for the ride. Bring what you like, we'll keep it cold.</p>
+      <summary data-i18n="faq3q">Can drinks be prepared for the ride?</summary>
+      <p data-i18n="faq3a">Yes. Drink options and any special requests are agreed before the date, so everything can be confirmed in advance.</p>
     </details>
     <details>
       <summary data-i18n="faq4q">How far ahead should we book?</summary>
@@ -443,5 +518,36 @@
 
 <script src="assets/translations.js"></script>
 <script src="assets/script.js"></script>
+
+<script>
+(() => {
+  const videos = document.querySelectorAll('[data-cinemagraph]');
+  if (!videos.length) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const loadVideo = (video) => {
+    if (video.dataset.loaded === 'true' || reducedMotion) return;
+    video.querySelectorAll('source[data-src]').forEach((source) => {
+      source.src = source.dataset.src;
+      source.removeAttribute('data-src');
+    });
+    video.dataset.loaded = 'true';
+    video.load();
+    video.play().catch(() => {});
+  };
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          loadVideo(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '240px 0px' });
+    videos.forEach((video) => observer.observe(video));
+  } else {
+    videos.forEach(loadVideo);
+  }
+})();
+</script>
 </body>
 </html>
