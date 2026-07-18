@@ -387,6 +387,102 @@
     return { signal: controller.signal, cancel: () => clearTimeout(timer) };
   }
 
+
+  function requestJsonp(url, timeoutMs = 15000) {
+    return new Promise((resolve, reject) => {
+      const callbackName = `__ptp_jsonp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const script = document.createElement("script");
+      const timer = window.setTimeout(() => {
+        cleanup();
+        reject(new Error("Availability request timed out."));
+      }, timeoutMs);
+
+      function cleanup() {
+        window.clearTimeout(timer);
+        script.remove();
+        try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
+      }
+
+      window[callbackName] = (result) => {
+        cleanup();
+        resolve(result);
+      };
+
+      url.searchParams.set("callback", callbackName);
+      url.searchParams.set("_", String(Date.now()));
+      script.src = url.toString();
+      script.async = true;
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("Availability request failed."));
+      };
+
+      document.head.appendChild(script);
+    });
+  }
+
+  function submitBookingBridge(payload, timeoutMs = 20000) {
+    return new Promise((resolve, reject) => {
+      const requestId = `ptp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+      const frameName = `ptp_booking_frame_${requestId}`;
+      const iframe = document.createElement("iframe");
+      const form = document.createElement("form");
+      let settled = false;
+
+      iframe.name = frameName;
+      iframe.hidden = true;
+      iframe.setAttribute("aria-hidden", "true");
+
+      form.method = "POST";
+      form.action = config.endpoint;
+      form.target = frameName;
+      form.hidden = true;
+
+      const fields = {
+        action: "createBookingBridge",
+        request_id: requestId,
+        payload_json: JSON.stringify(payload)
+      };
+
+      Object.entries(fields).forEach(([name, value]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+      });
+
+      const cleanup = () => {
+        window.removeEventListener("message", onMessage);
+        iframe.remove();
+        form.remove();
+      };
+
+      const finish = (handler, value) => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timer);
+        cleanup();
+        handler(value);
+      };
+
+      const onMessage = (event) => {
+        const data = event.data;
+        if (!data || data.source !== "party-tank-booking-bridge") return;
+        if (data.requestId !== requestId) return;
+        finish(resolve, data.result);
+      };
+
+      const timer = window.setTimeout(() => {
+        finish(reject, new Error("Booking request timed out."));
+      }, timeoutMs);
+
+      window.addEventListener("message", onMessage);
+      document.body.append(iframe, form);
+      form.submit();
+    });
+  }
+
   const provider = {
     async availability({ date, durationMinutes: duration }) {
       if (config.mode === "apps-script") {
@@ -396,16 +492,14 @@
         url.searchParams.set("date", date);
         url.searchParams.set("duration_minutes", String(duration));
         url.searchParams.set("vehicle_id", config.vehicleId || "hummer-h2-01");
-        const timeout = createTimeoutSignal(config.requestTimeoutMs || 15000);
-        try {
-          const response = await fetch(url.toString(), { method: "GET", signal: timeout.signal, cache: "no-store" });
-          if (!response.ok) throw new Error(`Availability HTTP ${response.status}`);
-          const result = await response.json();
-          if (!result.ok) throw new Error(result.message || result.code || "Availability failed.");
-          return result.slots || [];
-        } finally {
-          timeout.cancel();
+        const result = await requestJsonp(
+          url,
+          config.requestTimeoutMs || 15000
+        );
+        if (!result?.ok) {
+          throw new Error(result?.message || result?.code || "Availability failed.");
         }
+        return result.slots || [];
       }
 
       await new Promise((resolve) => setTimeout(resolve, 280));
@@ -423,20 +517,10 @@
     async createBooking(payload) {
       if (config.mode === "apps-script") {
         if (!config.endpoint) throw new Error("Missing Apps Script endpoint.");
-        const timeout = createTimeoutSignal(config.requestTimeoutMs || 15000);
-        try {
-          const response = await fetch(config.endpoint, {
-            method: "POST",
-            headers: { "Content-Type": "text/plain;charset=utf-8" },
-            body: JSON.stringify({ action: "createBooking", payload }),
-            signal: timeout.signal,
-            redirect: "follow"
-          });
-          if (!response.ok) throw new Error(`Booking HTTP ${response.status}`);
-          return await response.json();
-        } finally {
-          timeout.cancel();
-        }
+        return await submitBookingBridge(
+          payload,
+          config.requestTimeoutMs || 20000
+        );
       }
 
       await new Promise((resolve) => setTimeout(resolve, 500));
