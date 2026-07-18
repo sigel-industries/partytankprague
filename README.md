@@ -1,45 +1,25 @@
-# Party Tank Prague — website
+# Party Tank Prague — current frontend
 
-Statický one-page web pre Party Tank Prague. Beží na GitHub Pages, žiadny backend.
+Kompletný statický frontend pripravený na nahratie do koreňa GitHub repozitára.
 
-## Štruktúra
+## Aktívne súbory
 
-```txt
-index.html
-privacy.html
-assets/
-  style.css
-  script.js
-  translations.js
-  hummer-exterior.jpg, hummer-interior.jpg
-  gallery-3.jpg, gallery-4.jpg, gallery-5.jpg
-  bohemia-field.jpg
-  icon-*.png, og-image.jpg
-img/               (staré nepoužité SVG z predošlej verzie bez fotiek — dá sa zmazať)
-```
+- `index.html`
+- `privacy.html`
+- `assets/style.css`
+- `assets/script.js`
+- `assets/translations.js`
+- `assets/booking.css`
+- `assets/booking.js`
+- `assets/booking-config.js`
+- `assets/booking-translations.js`
+- obrázky, ikony a cinemagraph v `assets/`
 
-`index.html` načíta CSS/JS z `assets/`, nie z rootu.
+## Booking stav
 
-## Čo je hotové
+Booking wizard obsahuje vlastný kalendár, voľbu dĺžky, dostupné mock sloty,
+rekapituláciu, responzívny fullscreen režim na mobile a úspešnú testovaciu obrazovku.
 
-- moderný one-page vizuál, responzívny layout
-- EN/CZ prepínač (assets/translations.js)
-- animácie, reveal efekty, parallax, magnetic buttons
-- reálne fotky v hero, routes, vehicle aj gallery sekcii
-- booking form pripravený na Formspree napojenie
-- GitHub Pages ready
-
-## Čo ešte nie je produkčné — pred launchom doplniť
-
-1. **Formspree ID** — v `index.html` nájdi `action="https://formspree.io/f/YOUR_FORM_ID"`
-   a nahraď reálnym ID zo svojho Formspree účtu. Bez toho formulár beží len v demo režime.
-2. **Firemné údaje v pätičke a v `privacy.html`** — chýba IČO, registrovaný názov firmy, adresa.
-   Bez toho web pôsobí anonymne a nespĺňa české požiadavky na e-shop/službu.
-3. **Telefón / WhatsApp / Instagram** — over, že `+420702201572` skutočne berie hovory/WA správy
-   pod týmto biznisom, a nahraď placeholder odkaz na Instagram (momentálne vedie na obecný instagram.com).
-4. **Testimonials** (sekcia `.proof`) — sú explicitne označené ako placeholder, nahradiť reálnymi recenziami.
-5. **Ceny** (sekcia `.pricing`) — potvrdiť reálne sadzby pred spustením marketingu.
-
-## GitHub Pages
-
-Repo → Settings → Pages → Source: Deploy from branch → Branch: `main` → Folder: `/root`.
+`assets/booking-config.js` je zatiaľ nastavený na `mode: "mock"`.
+To znamená, že formulár ešte nič neposiela ani neukladá. Pred ostrým spustením
+musí byť napojený Apps Script endpoint a režim zmenený na `apps-script`.

@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://partytankprague.com/">
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/icon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/icon-180.png">
@@ -64,6 +64,8 @@
   ]
 }
 </script>
+
+<link rel="stylesheet" href="assets/booking.css">
 </head>
 <body>
 
@@ -510,7 +512,7 @@
       <span data-booking-progress="3"><i>3</i><b data-i18n="book_step3_short">Contact</b></span>
     </div>
 
-    <form class="booking-flow-v7" id="bookingForm" novalidate>
+    <form class="booking-flow-v7" id="bookingForm" data-booking-engine="v1" novalidate>
       <section class="booking-step-v7 is-active" data-booking-step="1">
         <div class="booking-step-copy-v7">
           <span>01</span>
@@ -527,20 +529,47 @@
           <label><input type="radio" name="occasion" value="other"><span data-i18n="book_occ_other">Other</span></label>
         </fieldset>
 
-        <div class="booking-fields-grid-v7">
-          <label class="booking-field-v7"><span data-i18n="book_date">Date</span><input type="date" name="date" required></label>
-          <label class="booking-field-v7"><span data-i18n="book_time">Preferred time</span><input type="time" name="time"></label>
-          <label class="booking-field-v7"><span data-i18n="book_guests">Guests</span><input type="number" name="guests" min="1" max="13" placeholder="1–13" required></label>
-          <label class="booking-field-v7"><span data-i18n="book_duration">Duration</span>
-            <select name="duration" required>
-              <option value="" data-i18n="book_duration_choose">Choose roughly</option>
-              <option value="1 hour" data-i18n="book_duration_1">1 hour</option>
-              <option value="2 hours" data-i18n="book_duration_2">2 hours</option>
-              <option value="3+ hours" data-i18n="book_duration_3">3 hours or more</option>
-              <option value="not sure" data-i18n="book_duration_unsure">Not sure yet</option>
-            </select>
-          </label>
-        </div>
+        <div class="booking-fields-grid-v7 booking-schedule-grid-v1">
+  <div class="booking-date-field-v2" id="bookingDateField">
+   <span data-i18n="book_date">Date</span>
+   <input type="hidden" name="date" id="bookingDateInput" value="">
+   <button type="button" class="booking-date-trigger-v2 is-placeholder" id="bookingDateTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="bookingCalendar">
+    <span id="bookingDateValue">Choose a date</span>
+    <svg class="booking-date-icon-v2" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+     <rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect>
+     <path d="M7.5 3.5v4M16.5 3.5v4M3.5 9.5h17"></path>
+    </svg>
+   </button>
+  </div>
+  <label class="booking-field-v7"><span data-i18n="book_guests">Guests</span><input type="number" name="guests" min="1" max="13" placeholder="1–13" required></label>
+ </div>
+
+ <div class="booking-calendar-v2" id="bookingCalendar" role="group" aria-labelledby="bookingCalendarLabel" hidden>
+  <div class="booking-calendar-head-v2">
+   <button type="button" class="booking-calendar-nav-v2" id="bookingCalendarPrev" aria-label="Previous month">‹</button>
+   <strong id="bookingCalendarLabel"></strong>
+   <button type="button" class="booking-calendar-nav-v2" id="bookingCalendarNext" aria-label="Next month">›</button>
+  </div>
+  <div class="booking-calendar-weekdays-v2" id="bookingCalendarWeekdays"></div>
+  <div class="booking-calendar-grid-v2" id="bookingCalendarGrid" role="grid"></div>
+ </div>
+
+ <fieldset class="booking-duration-v1">
+  <legend data-i18n="book_duration">Duration</legend>
+  <div class="booking-choice-grid-v1">
+   <label class="booking-choice-v1"><input type="radio" name="duration_minutes" value="60" required><span data-i18n="book_duration_1">1 hour</span></label>
+   <label class="booking-choice-v1"><input type="radio" name="duration_minutes" value="120"><span data-i18n="book_duration_2">2 hours</span></label>
+   <label class="booking-choice-v1"><input type="radio" name="duration_minutes" value="180"><span data-i18n="book_duration_3">3 hours</span></label>
+   <label class="booking-choice-v1"><input type="radio" name="duration_minutes" value="240"><span data-i18n="book_duration_4">4 hours</span></label>
+  </div>
+ </fieldset>
+
+ <fieldset class="booking-slots-v1" id="bookingSlotsFieldset">
+  <legend data-i18n="book_slots">Available start times</legend>
+  <input type="hidden" name="start_time" value="">
+  <p class="booking-slots-status-v1" id="bookingSlotStatus" aria-live="polite" data-i18n="book_slots_hint">Choose a date and duration first.</p>
+  <div class="booking-slots-grid-v1" id="bookingSlots"></div>
+ </fieldset>
       </section>
 
       <section class="booking-step-v7" data-booking-step="2">
@@ -588,20 +617,20 @@
 
         <div class="booking-summary-v7" id="bookingSummary"></div>
         <p class="booking-privacy-v7"><span data-i18n="book_privacy">By sending the request, you ask Party Tank Prague to contact you about this booking.</span> <a href="privacy.html" data-i18n="footer_privacy">Privacy &amp; Cookies</a></p>
-        <p class="booking-form-note-v7" id="formNote" aria-live="polite" data-i18n="book_mail_note">The button prepares an email with your request. The booking is confirmed only after our reply.</p>
+        <p class="booking-form-note-v7" id="formNote" aria-live="polite" data-i18n="book_mail_note">The selected time will be held temporarily while the driver checks the ride.</p>
       </section>
 
       <div class="booking-controls-v7">
         <button class="booking-back-v7" type="button" data-booking-prev hidden data-i18n="book_back">Back</button>
         <button class="btn btn-primary booking-next-v7" type="button" data-booking-next data-i18n="book_next">Continue</button>
-        <button class="btn btn-primary booking-submit-v7" type="submit" hidden data-i18n="book_submit">Prepare booking email</button>
+        <button class="btn btn-primary booking-submit-v7" type="submit" hidden data-i18n="book_submit">Request reservation</button>
       </div>
     </form>
   </div>
 </div>
 
 <div class="cookie-banner" id="cookieBanner">
-  <p data-i18n="cookie_text">We don't use tracking or advertising cookies. This site loads Google Fonts and may use your email application to prepare a booking request.</p>
+  <p data-i18n="cookie_text">We don't use tracking or advertising cookies. This site loads Google Fonts and uses the booking service only when you send a request.</p>
   <div class="cookie-actions">
     <a href="privacy.html" data-i18n="cookie_more">Learn more</a>
     <button id="cookieAccept" data-i18n="cookie_ok">Got it</button>
@@ -609,6 +638,7 @@
 </div>
 
 <script src="assets/translations.js"></script>
+<script src="assets/booking-translations.js"></script>
 <script src="assets/script.js"></script>
 
 <script>
@@ -642,157 +672,9 @@
 })();
 </script>
 
-<script>
-(() => {
-  const modal = document.getElementById('booking');
-  const form = document.getElementById('bookingForm');
-  if (!modal || !form) return;
 
-  const dialog = modal.querySelector('.booking-dialog-v7');
-  const steps = [...modal.querySelectorAll('[data-booking-step]')];
-  const progress = [...modal.querySelectorAll('[data-booking-progress]')];
-  const back = modal.querySelector('[data-booking-prev]');
-  const next = modal.querySelector('[data-booking-next]');
-  const submit = modal.querySelector('.booking-submit-v7');
-  const summary = document.getElementById('bookingSummary');
-  const note = document.getElementById('formNote');
-  let currentStep = 1;
-  let lastFocus = null;
 
-  const langDict = () => {
-    const lang = document.documentElement.lang === 'cs' ? 'cs' : 'en';
-    return (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[lang]) ? TRANSLATIONS[lang] : TRANSLATIONS.en;
-  };
-
-  function setStep(step) {
-    currentStep = Math.max(1, Math.min(3, step));
-    steps.forEach((panel, index) => panel.classList.toggle('is-active', index + 1 === currentStep));
-    progress.forEach((item, index) => {
-      item.classList.toggle('is-active', index + 1 === currentStep);
-      item.classList.toggle('is-done', index + 1 < currentStep);
-    });
-    back.hidden = currentStep === 1;
-    next.hidden = currentStep === 3;
-    submit.hidden = currentStep !== 3;
-    if (currentStep === 3) renderSummary();
-    dialog.scrollTop = 0;
-  }
-
-  function validateStep(step) {
-    const panel = modal.querySelector(`[data-booking-step="${step}"]`);
-    if (!panel) return true;
-    const required = [...panel.querySelectorAll('[required]')];
-    for (const field of required) {
-      if (field.type === 'radio') {
-        const checked = panel.querySelector(`input[name="${field.name}"]:checked`);
-        if (!checked) {
-          field.focus();
-          field.reportValidity();
-          return false;
-        }
-      } else if (!field.checkValidity()) {
-        field.reportValidity();
-        field.focus();
-        return false;
-      }
-    }
-    return true;
-  }
-
-  function textForChecked(selector) {
-    return [...form.querySelectorAll(selector)]
-      .filter(input => input.checked)
-      .map(input => input.closest('label')?.querySelector('span')?.textContent?.trim() || input.value)
-      .join(', ');
-  }
-
-  function value(name) {
-    const field = form.elements[name];
-    return field && 'value' in field ? field.value.trim() : '';
-  }
-
-  function renderSummary() {
-    const dict = langDict();
-    const occasion = textForChecked('input[name="occasion"]');
-    const interests = textForChecked('input[name="interests"]') || dict.book_summary_none;
-    const rows = [
-      [dict.book_summary_occasion, occasion],
-      [dict.book_summary_when, [value('date'), value('time')].filter(Boolean).join(' · ')],
-      [dict.book_summary_guests, value('guests')],
-      [dict.book_summary_duration, form.elements.duration?.selectedOptions?.[0]?.textContent || ''],
-      [dict.book_summary_pickup, value('pickup')],
-      [dict.book_summary_route, value('destination') || dict.book_summary_unspecified],
-      [dict.book_summary_interests, interests]
-    ];
-    summary.innerHTML = `<p>${dict.book_summary_title}</p><dl>${rows.map(([label, val]) => `<div><dt>${label}</dt><dd>${val || '—'}</dd></div>`).join('')}</dl>`;
-  }
-
-  function openModal(event) {
-    event?.preventDefault();
-    lastFocus = document.activeElement;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('booking-modal-open-v7');
-    document.getElementById('mobileMenu')?.classList.remove('open');
-    setStep(1);
-    setTimeout(() => modal.querySelector('[data-booking-close]')?.focus(), 30);
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('booking-modal-open-v7');
-    if (location.hash === '#booking') history.replaceState(null, '', location.pathname + location.search);
-    lastFocus?.focus?.();
-  }
-
-  document.querySelectorAll('a[href="#booking"], [data-booking-open]').forEach(trigger => trigger.addEventListener('click', openModal));
-  modal.querySelectorAll('[data-booking-close]').forEach(button => button.addEventListener('click', closeModal));
-  next.addEventListener('click', () => { if (validateStep(currentStep)) setStep(currentStep + 1); });
-  back.addEventListener('click', () => setStep(currentStep - 1));
-
-  document.addEventListener('keydown', (event) => {
-    if (!modal.classList.contains('is-open')) return;
-    if (event.key === 'Escape') closeModal();
-    if (event.key === 'Tab') {
-      const focusable = [...modal.querySelectorAll('button:not([hidden]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href]')].filter(el => el.offsetParent !== null);
-      if (!focusable.length) return;
-      const first = focusable[0], last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
-    }
-  });
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    if (!validateStep(3)) return;
-    const dict = langDict();
-    const occasion = textForChecked('input[name="occasion"]');
-    const interests = textForChecked('input[name="interests"]') || dict.book_summary_none;
-    const body = [
-      dict.book_mail_intro,
-      '',
-      `${dict.book_summary_occasion}: ${occasion}`,
-      `${dict.book_summary_when}: ${[value('date'), value('time')].filter(Boolean).join(' · ')}`,
-      `${dict.book_summary_guests}: ${value('guests')}`,
-      `${dict.book_summary_duration}: ${form.elements.duration?.selectedOptions?.[0]?.textContent || ''}`,
-      `${dict.book_summary_pickup}: ${value('pickup')}`,
-      `${dict.book_summary_route}: ${value('destination') || dict.book_summary_unspecified}`,
-      `${dict.book_summary_interests}: ${interests}`,
-      `${dict.book_wishes}: ${value('wishes') || dict.book_summary_unspecified}`,
-      '',
-      `${dict.book_name}: ${value('name')}`,
-      `${dict.book_email}: ${value('email')}`,
-      `${dict.book_phone}: ${value('phone') || '—'}`,
-      `${dict.book_contact_way}: ${form.elements.contact_way?.selectedOptions?.[0]?.textContent || ''}`
-    ].join('\n');
-    const subject = `${dict.book_mail_subject} · ${value('date') || occasion}`;
-    note.textContent = dict.book_mail_opened;
-    window.location.href = `mailto:info@partytankprague.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  });
-
-  if (location.hash === '#booking') openModal();
-})();
-</script>
+<script src="assets/booking-config.js"></script>
+<script src="assets/booking.js"></script>
 </body>
 </html>
