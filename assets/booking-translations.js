@@ -1,0 +1,68 @@
+/* Booking-specific translations loaded after assets/translations.js. */
+(() => {
+  if (typeof TRANSLATIONS === "undefined") return;
+
+  Object.assign(TRANSLATIONS.en, {
+    book_step1_p: "Choose the date and duration. We will show the start times currently available.",
+    book_duration: "Duration",
+    book_duration_1: "1 hour",
+    book_duration_2: "2 hours",
+    book_duration_3: "3 hours",
+    book_duration_4: "4 hours",
+    book_slots: "Available start times",
+    book_slots_hint: "Choose a date and duration first.",
+    book_slots_loading: "Checking the calendar…",
+    book_slots_none: "No suitable start time is currently available. Try another date or duration.",
+    book_slots_error: "Availability could not be loaded. Please try again.",
+    book_slots_select: "Choose one of the available start times.",
+    book_mail_note: "The selected time will be held temporarily while the driver checks the ride.",
+    book_submit: "Request reservation",
+    book_submitting: "Sending request…",
+    book_summary_end: "Ride ends",
+    book_summary_wishes: "Notes",
+    book_summary_contact: "Contact",
+    book_summary_reply: "Preferred reply",
+    book_phone_required: "Add a phone number for phone or WhatsApp replies.",
+    book_success_eyebrow: "Request received",
+    book_success_title: "Your time is temporarily held.",
+    book_success_text: "The driver will now check the ride. The reservation is confirmed only after direct confirmation.",
+    book_success_id: "Booking ID",
+    book_success_close: "Close",
+    book_success_again: "New request",
+    book_error_generic: "The request could not be saved. Nothing was booked. Please try again.",
+    book_error_conflict: "That time has just become unavailable. Choose another start time.",
+    cookie_text: "We don't use tracking or advertising cookies. This site loads Google Fonts and uses the booking service only when you send a request."
+  });
+
+  Object.assign(TRANSLATIONS.cs, {
+    book_step1_p: "Vyberte datum a délku jízdy. Ukážeme vám aktuálně dostupné časy začátku.",
+    book_duration: "Délka jízdy",
+    book_duration_1: "1 hodina",
+    book_duration_2: "2 hodiny",
+    book_duration_3: "3 hodiny",
+    book_duration_4: "4 hodiny",
+    book_slots: "Dostupné časy začátku",
+    book_slots_hint: "Nejdřív vyberte datum a délku jízdy.",
+    book_slots_loading: "Kontrolujeme kalendář…",
+    book_slots_none: "Pro tuto délku jízdy teď není vhodný čas. Zkuste jiné datum nebo délku.",
+    book_slots_error: "Dostupnost se nepodařilo načíst. Zkuste to znovu.",
+    book_slots_select: "Vyberte jeden z dostupných časů.",
+    book_mail_note: "Vybraný čas dočasně podržíme, než řidič jízdu zkontroluje.",
+    book_submit: "Odeslat žádost o rezervaci",
+    book_submitting: "Odesíláme žádost…",
+    book_summary_end: "Konec jízdy",
+    book_summary_wishes: "Poznámka",
+    book_summary_contact: "Kontakt",
+    book_summary_reply: "Preferovaná odpověď",
+    book_phone_required: "Pro odpověď telefonem nebo přes WhatsApp doplňte telefonní číslo.",
+    book_success_eyebrow: "Žádost přijata",
+    book_success_title: "Váš čas je dočasně podržený.",
+    book_success_text: "Řidič teď jízdu zkontroluje. Rezervace platí až po přímém potvrzení.",
+    book_success_id: "Číslo rezervace",
+    book_success_close: "Zavřít",
+    book_success_again: "Nová žádost",
+    book_error_generic: "Žádost se nepodařilo uložit. Nic nebylo rezervováno. Zkuste to znovu.",
+    book_error_conflict: "Tento čas už mezitím není dostupný. Vyberte jiný začátek.",
+    cookie_text: "Nepoužíváme reklamní ani měřicí cookies. Web načítá Google Fonts a rezervační službu použije pouze při odeslání žádosti."
+  });
+})();
