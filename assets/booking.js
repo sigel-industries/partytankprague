@@ -1,3 +1,7 @@
+/* Party Tank booking frontend v2.0
+ * Booking creation uses a cross-origin POST followed by JSONP result polling.
+ * This avoids Google Apps Script iframe/postMessage sandbox failures.
+ */
 (() => {
   "use strict";
 
@@ -426,17 +430,21 @@
       const requestId = `ptp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
       const frameName = `ptp_booking_frame_${requestId}`;
       const iframe = document.createElement("iframe");
-      const form = document.createElement("form");
+      const bridgeForm = document.createElement("form");
+      const startedAt = Date.now();
       let settled = false;
+      let pollTimer = 0;
+      let lastPollError = null;
 
       iframe.name = frameName;
       iframe.hidden = true;
       iframe.setAttribute("aria-hidden", "true");
 
-      form.method = "POST";
-      form.action = config.endpoint;
-      form.target = frameName;
-      form.hidden = true;
+      bridgeForm.method = "POST";
+      bridgeForm.action = config.endpoint;
+      bridgeForm.target = frameName;
+      bridgeForm.hidden = true;
+      bridgeForm.acceptCharset = "UTF-8";
 
       const fields = {
         action: "createBookingBridge",
@@ -444,42 +452,81 @@
         payload_json: JSON.stringify(payload)
       };
 
-      Object.entries(fields).forEach(([name, value]) => {
+      Object.entries(fields).forEach(([name, fieldValue]) => {
         const input = document.createElement("input");
         input.type = "hidden";
         input.name = name;
-        input.value = value;
-        form.appendChild(input);
+        input.value = fieldValue;
+        bridgeForm.appendChild(input);
       });
 
       const cleanup = () => {
-        window.removeEventListener("message", onMessage);
+        window.clearTimeout(pollTimer);
         iframe.remove();
-        form.remove();
+        bridgeForm.remove();
       };
 
       const finish = (handler, value) => {
         if (settled) return;
         settled = true;
-        window.clearTimeout(timer);
         cleanup();
         handler(value);
       };
 
-      const onMessage = (event) => {
-        const data = event.data;
-        if (!data || data.source !== "party-tank-booking-bridge") return;
-        if (data.requestId !== requestId) return;
-        finish(resolve, data.result);
+      const pollResult = async () => {
+        if (settled) return;
+
+        const elapsed = Date.now() - startedAt;
+        const remaining = timeoutMs - elapsed;
+        if (remaining <= 0) {
+          const suffix = lastPollError ? ` Last polling error: ${lastPollError.message}` : "";
+          finish(reject, new Error(`Booking result timed out.${suffix}`));
+          return;
+        }
+
+        try {
+          const resultUrl = new URL(config.endpoint);
+          resultUrl.searchParams.set("action", "bookingResult");
+          resultUrl.searchParams.set("request_id", requestId);
+
+          const envelope = await requestJsonp(
+            resultUrl,
+            Math.min(5000, Math.max(1500, remaining))
+          );
+
+          if (!envelope?.ok) {
+            throw new Error(envelope?.message || envelope?.code || "Booking result lookup failed.");
+          }
+
+          if (envelope.ready) {
+            finish(
+              resolve,
+              envelope.result || { ok: false, code: "empty_result" }
+            );
+            return;
+          }
+
+          lastPollError = null;
+        } catch (error) {
+          // A single failed poll must not create a fake booking failure.
+          // Continue until the overall request timeout expires.
+          lastPollError = error instanceof Error ? error : new Error(String(error));
+        }
+
+        pollTimer = window.setTimeout(pollResult, 550);
       };
 
-      const timer = window.setTimeout(() => {
-        finish(reject, new Error("Booking request timed out."));
-      }, timeoutMs);
+      document.body.append(iframe, bridgeForm);
 
-      window.addEventListener("message", onMessage);
-      document.body.append(iframe, form);
-      form.submit();
+      try {
+        bridgeForm.submit();
+      } catch (error) {
+        finish(reject, error instanceof Error ? error : new Error(String(error)));
+        return;
+      }
+
+      // Give the POST a short head start, then read the durable result by JSONP.
+      pollTimer = window.setTimeout(pollResult, 450);
     });
   }
 
