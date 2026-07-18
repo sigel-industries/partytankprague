@@ -46,41 +46,7 @@ if (cookieBanner) {
   });
 }
 
-/* ---------- Booking form ---------- */
-const form = document.getElementById('bookingForm');
-const note = document.getElementById('formNote');
-const formIsConfigured = form && !form.action.includes('YOUR_FORM_ID');
-
-form.addEventListener('submit', async (e) => {
-  if (!formIsConfigured) {
-    e.preventDefault();
-    note.textContent = 'Demo mode — connect this form to Formspree (see code comment above) to receive real requests.';
-    note.style.color = '#52e0c4';
-    form.reset();
-    return;
-  }
-  e.preventDefault();
-  note.textContent = 'Sending…';
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      note.textContent = 'Request sent — we will get back to you to confirm.';
-      note.style.color = '#52e0c4';
-      form.reset();
-    } else {
-      note.textContent = 'Something went wrong sending that — try again or email us directly.';
-      note.style.color = '#ff7a3d';
-    }
-  } catch (err) {
-    note.textContent = 'Something went wrong sending that — try again or email us directly.';
-    note.style.color = '#ff7a3d';
-  }
-});
-
+/* ---------- Booking form handled by the V7 modal ---------- */
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reduceMotion) {
@@ -249,52 +215,32 @@ const EXPERIENCE_SCENES = [
   {
     id: 'prague',
     accent: '#ffb088',
-    hero: 'assets/experiences/prague-main.webp',
-    gallery: [
-      'assets/experiences/prague-main.webp',
-      'assets/experiences/prague-alt-1.webp',
-      'assets/experiences/prague-alt-2.webp'
-    ]
+    hero: 'assets/hummer-exterior.jpg',
+    gallery: ['assets/hummer-exterior.jpg', 'assets/gallery-1.jpg', 'assets/gallery-5.jpg']
   },
   {
     id: 'wedding',
     accent: '#f3d6ad',
-    hero: 'assets/experiences/wedding-main.webp',
-    gallery: [
-      'assets/experiences/wedding-main.webp',
-      'assets/experiences/wedding-alt-1.webp',
-      'assets/experiences/wedding-alt-2.webp'
-    ]
+    hero: 'assets/gallery-1.jpg',
+    gallery: ['assets/gallery-1.jpg', 'assets/hummer-exterior.jpg', 'assets/gallery-3.jpg']
   },
   {
     id: 'birthday',
     accent: '#ff8b79',
-    hero: 'assets/experiences/birthday-main.webp',
-    gallery: [
-      'assets/experiences/birthday-main.webp',
-      'assets/experiences/birthday-alt-1.webp',
-      'assets/experiences/birthday-alt-2.webp'
-    ]
+    hero: 'assets/hummer-interior.jpg',
+    gallery: ['assets/hummer-interior.jpg', 'assets/gallery-2.jpg', 'assets/gallery-4.jpg']
   },
   {
     id: 'vip',
     accent: '#8bc6ff',
-    hero: 'assets/experiences/vip-main.webp',
-    gallery: [
-      'assets/experiences/vip-main.webp',
-      'assets/experiences/vip-alt-1.webp',
-      'assets/experiences/vip-alt-2.webp'
-    ]
+    hero: 'assets/hummer-exterior.jpg',
+    gallery: ['assets/hummer-exterior.jpg', 'assets/gallery-5.jpg', 'assets/gallery-1.jpg']
   },
   {
     id: 'party',
     accent: '#ff58b5',
-    hero: 'assets/experiences/party-main.webp',
-    gallery: [
-      'assets/experiences/party-main.webp',
-      'assets/experiences/party-alt-1.webp',
-      'assets/experiences/party-alt-2.webp'
-    ]
+    hero: 'assets/gallery-2.jpg',
+    gallery: ['assets/gallery-2.jpg', 'assets/hummer-interior.jpg', 'assets/gallery-4.jpg']
   }
 ];
 
