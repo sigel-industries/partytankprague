@@ -60,6 +60,8 @@
       book_summary_end: "Ride ends",
       book_summary_guests: "Guests",
       book_summary_duration: "Duration",
+      book_summary_price: "Estimated price",
+      book_price_from: "from",
       book_summary_pickup: "Pickup",
       book_summary_route: "Route",
       book_summary_interests: "Interests",
@@ -99,6 +101,8 @@
       book_summary_end: "Konec jízdy",
       book_summary_guests: "Hosté",
       book_summary_duration: "Délka",
+      book_summary_price: "Orientační cena",
+      book_price_from: "od",
       book_summary_pickup: "Vyzvednutí",
       book_summary_route: "Trasa",
       book_summary_interests: "Doplňky",
@@ -269,6 +273,54 @@
   function durationMinutes() {
     const checked = form.querySelector('input[name="duration_minutes"]:checked');
     return checked ? Number(checked.value) : 0;
+  }
+
+  function pricingForDuration(duration = durationMinutes()) {
+    const pricing = config.pricing || {};
+    if (!pricing.enabled || !duration) return null;
+    const raw = pricing.byDurationMinutes?.[duration] ?? pricing.byDurationMinutes?.[String(duration)];
+    const amount = Number(raw);
+    if (!Number.isFinite(amount) || amount <= 0) return null;
+    return {
+      amount,
+      currency: String(pricing.currency || "CZK").toUpperCase(),
+      displayMode: pricing.displayMode === "exact" ? "exact" : "from"
+    };
+  }
+
+  function formatMoney(amount, currency) {
+    try {
+      return new Intl.NumberFormat(language() === "cs" ? "cs-CZ" : "en-CZ", {
+        style: "currency",
+        currency,
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
+      }).format(amount);
+    } catch (_) {
+      return `${Math.round(amount).toLocaleString(language() === "cs" ? "cs-CZ" : "en-US")} ${currency}`;
+    }
+  }
+
+  function priceDisplay(price = pricingForDuration()) {
+    if (!price) return "";
+    const formatted = formatMoney(price.amount, price.currency);
+    return price.displayMode === "from" ? `${dictionary().book_price_from} ${formatted}` : formatted;
+  }
+
+  function decorateDurationPrices() {
+    form.querySelectorAll('input[name="duration_minutes"]').forEach((input) => {
+      const span = input.closest("label")?.querySelector("span");
+      if (!span) return;
+      const price = pricingForDuration(Number(input.value));
+      const display = priceDisplay(price);
+      if (display) {
+        span.dataset.priceDisplay = display;
+        span.classList.add("has-booking-price-v1");
+      } else {
+        delete span.dataset.priceDisplay;
+        span.classList.remove("has-booking-price-v1");
+      }
+    });
   }
 
   function value(name) {
@@ -532,6 +584,8 @@
     appendSummaryRow(list, dict.book_summary_end, endTime());
     appendSummaryRow(list, dict.book_summary_guests, value("guests"));
     appendSummaryRow(list, dict.book_summary_duration, duration ? `${duration / 60} h` : "");
+    const selectedPrice = pricingForDuration(duration);
+    if (selectedPrice) appendSummaryRow(list, dict.book_summary_price, priceDisplay(selectedPrice));
     appendSummaryRow(list, dict.book_summary_pickup, value("pickup"));
     appendSummaryRow(list, dict.book_summary_route, value("destination") || dict.book_summary_unspecified);
     appendSummaryRow(list, dict.book_summary_interests, interests);
@@ -567,6 +621,9 @@
       guests: Number(value("guests")),
       ride_date: value("date"),
       duration_minutes: duration,
+      price_amount: pricingForDuration(duration)?.amount ?? null,
+      price_currency: pricingForDuration(duration)?.currency ?? null,
+      price_display_mode: pricingForDuration(duration)?.displayMode ?? null,
       start_time: value("start_time"),
       end_time: endTime(),
       pickup_address: value("pickup"),
@@ -701,7 +758,10 @@
     updateDateDisplay();
     loadAvailability();
   });
-  form.querySelectorAll('input[name="duration_minutes"]').forEach((input) => input.addEventListener("change", loadAvailability));
+  form.querySelectorAll('input[name="duration_minutes"]').forEach((input) => input.addEventListener("change", () => {
+    decorateDurationPrices();
+    loadAvailability();
+  }));
   contactWay?.addEventListener("change", () => {
     updatePhoneRequirement();
     if (currentStep === 3) renderSummary();
@@ -768,6 +828,7 @@
 
   const langObserver = new MutationObserver(() => {
     updateDateDisplay();
+    requestAnimationFrame(decorateDurationPrices);
     if (calendar && !calendar.hidden) renderCalendar();
     if (title && !form.hidden) {
       const dict = dictionary();
@@ -779,6 +840,7 @@
   langObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
 
   updateDateDisplay();
+  decorateDurationPrices();
   updatePhoneRequirement();
   setStatus(dictionary().book_slots_hint);
   if (location.hash === "#booking") openModal();
